@@ -84,7 +84,7 @@ void	Contact::display()
 		information = informations[i];
 		if (information.size() > SIZEMAX_ALLOWED)
 		{
-			information = information.substr(0, 9);
+			information = information.substr(0, 10);
 			information = information.append(".");
 		}
 		std::cout << std::setw(SIZEMAX_ALLOWED) << std::right << information;

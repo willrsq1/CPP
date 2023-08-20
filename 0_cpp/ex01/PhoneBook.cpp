@@ -29,7 +29,7 @@ void	PhoneBook::show_contact()
 		std::cout << RED << "Error: No contact has been registered yet. Please add some contacts before trying again." << RESET_COLOR << std::endl;
 		return ;
 	}
-	std::cout << GREEN << "\nDisplay of the registered contacts: " << RESET_COLOR << std::endl;
+	std::cout << GREEN << "\nDisplay of the registered contacts:\n" << RESET_COLOR << std::endl;
 	while (number < number_of_registered_contacts)
 	{
 		std::cout << "         " << number << "|"; 
