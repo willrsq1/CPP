@@ -17,7 +17,7 @@ class PhoneBook
 	Contact	Contacts[PHONEBOOK_SIZE];
 
 	public :
-		void	Constructor();
+				PhoneBook();
 		void	new_contact();
 		void	show_contact();
 };

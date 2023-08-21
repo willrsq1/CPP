@@ -7,7 +7,6 @@ int main()
 
 	std::cout << "\nWelcome to the PhoneBook Program !" << std::endl;
 	std::cout << "Please enter one of three commands: ADD, SEARCH or EXIT.\n" << std::endl;
-	phonebook.Constructor();
 	while (1)
 	{
 		std::cout << "PhoneBook > ";

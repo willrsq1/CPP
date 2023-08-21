@@ -29,6 +29,7 @@ class Contact
 		void			set_information(int, std::string);
 
 	public :
+						Contact();
 		void			show_informations();
 		int				new_contact();
 		void			display();

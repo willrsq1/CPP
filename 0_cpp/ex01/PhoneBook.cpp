@@ -1,6 +1,6 @@
 #include "PhoneBook.hpp"
 
-void	PhoneBook::Constructor()
+PhoneBook::PhoneBook()
 {
 	contact_index = 0;
 	number_of_registered_contacts = 0;

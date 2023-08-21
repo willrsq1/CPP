@@ -1,5 +1,14 @@
 # include "Contact.hpp"
 
+Contact::Contact()
+{
+	informations[FIRSTNAME] = "Firstname";
+	informations[LASTNAME] = "Lasttname";
+	informations[NICKNAME] = "Nickname";
+	informations[PHONE_NUMBER] = "Phone number";
+	informations[DARKEST_SECRET] = "Darkest secret";
+}
+
 std::string	Contact::show_name()
 {
 	return (informations[FIRSTNAME]);
