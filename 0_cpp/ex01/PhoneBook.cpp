@@ -44,20 +44,20 @@ void	PhoneBook::show_contact()
 		if (std::cin.eof())
 			return ;
 		std::istringstream	iss(input);
-		if (iss >> number)
+		if (iss >> number && input.length() == 1 && std::isdigit((int)input[0]))
 		{
 			if (number >= 0 && number < number_of_registered_contacts)
 				break ;
-			else if (number < 0 || number >= PHONEBOOK_SIZE)
-				std::cout << RED << "Error: The number must be in the range 0 - 7. Thank you !" << RESET_COLOR << std::endl;
 			else if (number_of_registered_contacts == 1)
 				std::cout << RED << "Error: The number must be 0 (only one contact was added). Thank you !" << RESET_COLOR << std::endl;
 			else
 				std::cout << RED << "Error: Not a an existing contact. Please enter a number between 0 and " \
 					<< number_of_registered_contacts - 1 << ". Thank you !" << RESET_COLOR << std::endl;
 		}
+		else if (number < 0 || number >= PHONEBOOK_SIZE)
+			std::cout << RED << "Error: The number must be in the range 0 - 7. Thank you !" << RESET_COLOR << std::endl;
 		else
-			std::cout << RED << "Error: Not a number. Try again please." << RESET_COLOR << std::endl;
+			std::cout << RED << "Error: Not a valid number. Try again please." << RESET_COLOR << std::endl;
 	}
 	std::cout << GREEN << "\nSuccess: Displaying contact number " << number << ". Thank you !" << RESET_COLOR << std::endl;
 	Contacts[number].show_informations();
