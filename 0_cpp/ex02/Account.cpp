@@ -65,6 +65,8 @@ bool	Account::makeWithdrawal(int withdrawal)
 Account::~Account()
 {
 	_displayTimestamp();
+	_nbAccounts -= 1;
+	_totalAmount -= _amount;
 	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";closed" << std::endl;
 }
 

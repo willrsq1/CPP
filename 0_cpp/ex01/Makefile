@@ -9,7 +9,6 @@ NAME    = My_Awesome_PhoneBook
 
 ### SOURCE FILES ###
 
-# HEADERS = Phonebook.hpp
 SOURCES =	PhoneBook.cpp \
 			Contact.cpp \
 			main.cpp \
