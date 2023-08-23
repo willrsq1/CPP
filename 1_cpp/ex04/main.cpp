@@ -27,7 +27,7 @@ void	my_str_replace(std::string& full_text, std::string text_to_find, std::strin
 	std::string		substr_2;
 	size_t			pos;
 
-	while(1)
+	while (1)
 	{
 		pos = full_text.find(text_to_find);
 		if (pos == std::string::npos)
@@ -65,7 +65,8 @@ int main(int argc, char **argv)
 	}
 	if (get_text(full_text, argv[1]))
 		return (EXIT_FAILURE);
-	my_str_replace(full_text, argv[2], argv[3]);
+	if (argv[2][0])
+		my_str_replace(full_text, argv[2], argv[3]);
 	if (create_and_write_to_file(full_text, argv[1]))
 		return (EXIT_FAILURE);
 	return (0);

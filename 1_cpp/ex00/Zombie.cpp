@@ -2,12 +2,12 @@
 
 void	Zombie::announce(void)
 {
-	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void	Zombie::set_name(std::string given_name)
+void	Zombie::set_name(std::string name)
 {
-	name = given_name;
+	this->name = name;
 }
 
 Zombie::Zombie()
@@ -16,10 +16,10 @@ Zombie::Zombie()
 	std::cout << "I was created in first constructor" << std::endl;
 }
 
-Zombie::Zombie(std::string given_name)
+Zombie::Zombie(std::string name)
 {
-	name = given_name;
-	std::cout << "I was created in second constructor: " << name << std::endl;
+	this->name = name;
+	std::cout << "I was created in second constructor: " << this->name << std::endl;
 }
 
 Zombie::~Zombie()
