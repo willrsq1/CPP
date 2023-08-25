@@ -1,16 +1,21 @@
 ### COMPILATION ###
 
 CC      = c++
-FLAGS   = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+FLAGS   = -Wall -Wextra -Werror -std=c++98 -fsanitize=thread
 
 ### EXECUTABLE ###
 
-NAME    = ex02
+NAME    = ex03
 
 ### SOURCE FILES ###
 
 SOURCES =	main.cpp \
+			MateriaSource.cpp \
+			Character.cpp \
+			ICharacter.cpp \
+			Cure.cpp \
 			Ice.cpp \
+			AMateria.cpp \
 			
 OBJS    = $(SOURCES:.cpp=.o)
 
@@ -21,7 +26,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) -o $@ $^
 
-%.o: %.cpp %.hpp
+%.o: %.cpp *.hpp
 	$(CC) $(FLAGS) -c -o $@ $<
 
 clean:

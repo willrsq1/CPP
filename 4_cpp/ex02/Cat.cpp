@@ -33,19 +33,6 @@ Cat& Cat::operator= (const Cat& other)
 	return (*this);
 }
 
-void Cat::makeSound() const
-{
-	if (this->type == "Cat")
-		std::cout << "Meooooooow" << std::endl;
-	else
-		std::cout << "......" << std::endl;
-}
-
-std::string	Cat::getType() const
-{
-	return (this->type);
-}
-
 void Cat::ShowBrainIdea(int n)
 {
 	if (brain_ptr)

@@ -21,7 +21,7 @@ delete big;
 big = big2;
 big->makeSound();
 delete big2;
-
+// AAnimal hey;
 // return 1;
 
 

@@ -2,11 +2,9 @@
 # define ICE_HPP
 
 # include <iostream>
-# ifndef CLASS(x, y)
-#  define CLASS(x, y) std::cout << "Called " << x << " of class " << y << std::endl
-# endif
+# include "AMateria.hpp"
 
-class Ice
+class Ice: public AMateria
 {
 	private:
 
@@ -17,6 +15,7 @@ class Ice
 		~Ice();
 		Ice(const Ice&);
 		Ice& operator= (const Ice&);
+		AMateria* clone() const;
 };
 
 #endif

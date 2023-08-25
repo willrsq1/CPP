@@ -33,3 +33,18 @@ AAnimal& AAnimal::operator= (const AAnimal& other)
 		this->brain_ptr = new Brain(*other.brain_ptr);
 	return (*this);
 }
+
+void AAnimal::makeSound() const
+{
+	if (this->type == "Cat")
+		std::cout << "Meooooooow" << std::endl;
+	if (this->type == "Dog")
+		std::cout << "Waf waf waf" << std::endl;
+	else
+		std::cout << "......" << std::endl;
+}
+
+std::string	AAnimal::getType() const
+{
+	return (this->type);
+}

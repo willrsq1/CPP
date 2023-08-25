@@ -10,8 +10,6 @@ class Cat: public AAnimal
 		~Cat();
 		Cat(const Cat&);
 		Cat& operator= (const Cat&);
-		void	makeSound() const;
-		std::string		getType() const;
 		void	ShowBrainIdea(int n);
 };
 

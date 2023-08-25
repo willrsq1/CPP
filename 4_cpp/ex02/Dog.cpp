@@ -33,19 +33,6 @@ Dog& Dog::operator= (const Dog& other)
 	return (*this);
 }
 
-void Dog::makeSound() const
-{
-	if (this->type == "Dog")
-		std::cout << "Waf Waf" << std::endl;
-	else
-		std::cout << "......" << std::endl;
-}
-
-std::string	Dog::getType() const
-{
-	return (this->type);
-}
-
 void Dog::ShowBrainIdea(int n)
 {
 	if (brain_ptr)

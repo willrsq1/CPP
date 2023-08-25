@@ -5,7 +5,7 @@ def generate_class_files(class_name):
 # define {class_name.upper()}_HPP
 
 # include <iostream>
-# ifndef CLASS(x, y)
+# ifndef CLASS
 #  define CLASS(x, y) std::cout << "Called " << x << " of class " << y << std::endl
 # endif
 
@@ -37,7 +37,7 @@ class {class_name}
 	CLASS("Destructor", "{class_name}");
 }}
 
-{class_name}::{class_name}(const {class_name}& other)
+{class_name}::{class_name}(const {class_name}&)
 {{
 	CLASS("Constructor by copy", "{class_name}");
 }}
