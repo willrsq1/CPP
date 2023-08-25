@@ -4,8 +4,8 @@
 # include <iostream>
 # include "ICharacter.hpp"
 # ifndef CLASS
-# define CLASS(x, y) std::cout << ""
-// #  define CLASS(x, y) std::cout << "Called " << x << " of class " << y << std::endl
+// # define CLASS(x, y) std::cout << ""
+#  define CLASS(x, y) std::cout << "Called " << x << " of class " << y << std::endl
 # endif
 
 # define MATERIA_TAB_SIZE 4
