@@ -26,15 +26,18 @@ void	my_str_replace(std::string& full_text, std::string text_to_find, std::strin
 	std::string		substr_1;
 	std::string		substr_2;
 	size_t			pos;
+	size_t			prev_pos;
 
+	prev_pos = 0;
 	while (1)
 	{
-		pos = full_text.find(text_to_find);
+		pos = full_text.find(text_to_find, prev_pos);
 		if (pos == std::string::npos)
 			break ;
 		substr_1 = full_text.substr(0, pos);
 		substr_2 = full_text.substr(pos + text_to_find.size(), full_text.size());
 		full_text = substr_1 + text_to_replace + substr_2;
+		prev_pos = substr_1.size() + text_to_replace.size();
 	}
 }
 

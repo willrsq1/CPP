@@ -6,6 +6,7 @@ def generate_class_files(class_name):
 
 # include <iostream>
 # ifndef CLASS
+// #  define CLASS(x, y) std::cout << ""
 #  define CLASS(x, y) std::cout << "Called " << x << " of class " << y << std::endl
 # endif
 
@@ -37,9 +38,11 @@ class {class_name}
 	CLASS("Destructor", "{class_name}");
 }}
 
-{class_name}::{class_name}(const {class_name}&)
+{class_name}::{class_name}(const {class_name}& other)
 {{
 	CLASS("Constructor by copy", "{class_name}");
+	if (this == &other)
+		return ;
 }}
 
 {class_name}& {class_name}::operator= (const {class_name}& other)
