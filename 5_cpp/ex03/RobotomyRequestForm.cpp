@@ -1,4 +1,5 @@
 #include "RobotomyRequestForm.hpp"
+#include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm(): Form("Robotomy Request Form", 72, 45)
 {

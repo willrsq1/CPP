@@ -2,8 +2,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-
-
+#include "Intern.hpp"
 
 void	make_the_exec_a_noob(Bureaucrat executor)
 {
@@ -24,37 +23,30 @@ void	get_a_form_signed(Form *form, Bureaucrat executor)
 
 int	main()
 {
+	Form* rrf = NULL;
+
 	try
 	{
-		PresidentialPardonForm a("Bob");
-		RobotomyRequestForm b("Eya");
-		ShrubberyCreationForm c = ShrubberyCreationForm("Jack");
-
-		Bureaucrat		guy("Paul", 150);
-		get_a_form_signed(&a, guy);
-		make_the_exec_a_noob(guy);
-		get_a_form_signed(&b, guy);
-		make_the_exec_a_noob(guy);
-		get_a_form_signed(&c, guy);
-
-		PresidentialPardonForm d("Emma");
-
-		std::cout << a << std::endl;
-		std::cout << b << std::endl;
-		std::cout << c << std::endl;
-		std::cout << d << std::endl;
-		guy.executeForm(d);
-		while (guy.getRank() > d.getSignGrade())
-			guy.incrGrade();
-		d.beSigned(guy);
-		
-		guy.executeForm(d);
-		d.execute(guy);
+		Intern someRandomIntern;
+		Bureaucrat	bob("BOB", 3);
+		rrf = someRandomIntern.makeForm(ROBO, "Bender");
+		std::cout << *rrf << std::endl;
+		delete rrf;
+		rrf = someRandomIntern.makeForm(PRESI, "Finn");
+		std::cout << *rrf << std::endl;
+		delete rrf;
+		rrf = someRandomIntern.makeForm(SHRUB, "Finn");
+		std::cout << *rrf << std::endl;
+		rrf->beSigned(bob);
+		bob.executeForm(*rrf);
+		bob.signForm(*rrf);
+		rrf->execute(bob);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << RED << "Exception: " << e.what() << RESET_COLOR << '\n';
-		return (1);
 	}
+	if (rrf)
+		delete rrf;
 	return (0);
 }

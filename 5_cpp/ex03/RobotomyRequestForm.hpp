@@ -4,7 +4,6 @@
 # include <iostream>
 # include "Form.hpp"
 # include <cstdlib>
-# include <ctime>
 # ifndef CLASS
 // #  define CLASS(x, y) std::cout << ""
 #  define CLASS(x, y) std::cout << "Called " << x << " of class " << y << std::endl
