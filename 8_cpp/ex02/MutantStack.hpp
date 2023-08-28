@@ -18,6 +18,10 @@ class MutantStack: public std::stack<T>
 	public:
 		MutantStack() {};
 		~MutantStack() {}
+		MutantStack<T>(const MutantStack<T>& other): std::stack<T>(other) {}
+		MutantStack<T>& operator= (const MutantStack<T>&){
+			return (*this);
+		}
 		typename std::stack<T>::container_type::iterator begin(){
 			return (this->c.begin());
 		}

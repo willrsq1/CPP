@@ -14,6 +14,7 @@ std::cout << mstack.size() << std::endl;
 mstack.push(3);
 mstack.push(5);
 mstack.push(737);
+std::cout << "\n\nhere\n";
 //[...]
 mstack.push(0);
 MutantStack<int>::iterator it = mstack.begin();
@@ -26,7 +27,19 @@ std::cout << *it << std::endl;
 ++it;
 }
 std::stack<int> s(mstack);
+MutantStack<int> t(mstack);
 // return 0;
+// t = mstack;
+it = t.begin();
+ite = t.end();
+
+std::cout << "\n\nhere\n";
+
+while (it != ite)
+{
+std::cout << *it << std::endl;
+++it;
+}
 }
 std::cout << "\n\n List:\n";
 {
