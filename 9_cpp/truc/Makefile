@@ -1,7 +1,7 @@
 ### COMPILATION ###
 
 CC      = c++
-FLAGS   = -Wall -Wextra -Werror -fsanitize=address
+FLAGS   = -Wall -Wextra -Werror
 
 ### EXECUTABLE ###
 

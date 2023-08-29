@@ -9,18 +9,94 @@
 # include <algorithm>
 # include <exception>
 # include <sstream>
+# include <limits.h>
 
 # ifndef CLASS
-// #  define CLASS(x, y) std::cout << ""
-#  define CLASS(x, y) std::cout << "Called " << x << " of class " << y << std::endl
+#  define CLASS(x, y) std::cout << ""
+// #  define CLASS(x, y) std::cout << "Called " << x << " of class " << y << std::endl
 # endif
 
-# define TEMPLATE 1
-
+# ifndef TEMPLATE
+# 	define TEMPLATE 1
+# endif
 // DEFINES IF WE WILL USE YHE TEMPLATE CLASS OR THE CLASS WITH TWO DIFFERENT CONTAINERS IMPLEMANTED MANUALLY
 
-# if TEMPLATE  == 0
+int	my_atoi(char *s);
 
+# if TEMPLATE == 0
+
+class PmergeMe
+{
+	private:
+		std::vector<int>								Vnumbers;
+
+		std::vector<int>::iterator	 					Vmain_it;
+		std::vector<int>::iterator 						Vmain_ite;
+		std::vector<int>::iterator 						Vmain_ite_plus_one;
+		std::vector<int>::iterator 						Vmain_ite_minus_one;
+
+		std::vector<std::pair<int, int> >				V;
+		std::vector<std::pair<int, int> >::iterator		Vit;
+		std::vector<std::pair<int, int> >::iterator		Vite;
+
+		std::vector<std::pair<int, int> > 				Vmap;	
+		std::vector<std::pair<int, int> >::iterator 	Vmap_it;
+		std::vector<std::pair<int, int> >::iterator 	Vmap_ite;
+
+		int												Vimpair;
+
+		void											Vmain();
+		void											VcreatePairs();
+		void											VsortPairs();
+		void											VinsertByFirst();
+		void											VinsertmergeSeconds();
+		
+		std::deque<int>									Lnumbers;
+
+		std::deque<int>::iterator	 					Lmain_it;
+		std::deque<int>::iterator 						Lmain_ite;
+		std::deque<int>::iterator 						Lmain_ite_plus_one;
+		std::deque<int>::iterator 						Lmain_ite_minus_one;
+
+		std::deque<std::pair<int, int> >					L;
+		std::deque<std::pair<int, int> >::iterator		Lit;
+		std::deque<std::pair<int, int> >::iterator		Lite;
+
+		std::deque<std::pair<int, int> > 				Lmap;	
+		std::deque<std::pair<int, int> >::iterator 		Lmap_it;
+		std::deque<std::pair<int, int> >::iterator 		Lmap_ite;
+
+		int												Limpair;
+
+		void											Lmain();
+		void											LcreatePairs();
+		void											LsortPairs();
+		void											LinsertByFirst();
+		void											LinsertmergeSeconds();
+	protected:
+
+	public:
+		PmergeMe();
+		~PmergeMe();
+		PmergeMe(const PmergeMe&);
+		PmergeMe& operator= (const PmergeMe&);
+		void	VSortMergeAlgo(char **, int);
+
+
+		void	LSortMergeAlgo(char **, int);
+
+
+		class Doubles: public std::exception
+		{
+			const char* what() const throw();
+		};
+};
+
+void	Vprint_main(std::vector<int> v);
+void	Lprint_main(std::deque<int> v);
+void	Vprint(std::vector<std::pair<int, int> > v);
+
+ //END OF FIXED CLASS
 # elif TEMPLATE == 1
 
 // WITH TEMPLATE
@@ -29,33 +105,24 @@ template <typename Container, typename Pairs>
 class PmergeMe
 {
 	private:
-		Container											_numbers;
 
+		Container											_numbers;
 		typename Container::iterator	 					_numbers_it;
 		typename Container::iterator 						_numbers_ite;
-		typename Container::iterator 						_numbers_ite_plus_one;
-		typename Container::iterator 						_numbers_ite_minus_one;
 
-		Pairs												_setOne;
-		typename Pairs::iterator							_setOne_it;
-		typename Pairs::iterator							_setOne_ite;
-
-		Pairs 												_setTwo_it;	
-		typename Pairs::iterator 							_setTwo_it_it;
-		typename Pairs::iterator 							_setTwo_it_ite;
+		Pairs												_pairs;
+		typename Pairs::iterator							_pairs_it;
+		typename Pairs::iterator							_pairs_ite;
 
 		int													_impair;
 
-		void												_Sort();
 		void												_CreateStack(char**, int);
 		void												_createPairs();
 		void												_sortPairs();
-		void												_insertByFirst();
-		void												_insertmergeSeconds();
+		void												_MergeInsertSort();
 		void												_print_Sort(Container v);
 
-
-		std::stringstream										out;
+		std::stringstream									out;
 
 	protected:
 
@@ -64,14 +131,22 @@ class PmergeMe
 		~PmergeMe();
 		PmergeMe(const PmergeMe&);
 		PmergeMe& operator= (const PmergeMe&);
-		void	_SortStack(char **, int);
-		class Doubles: public std::exception
-		{
-			const char* what() const throw()
-			{
-				return ("Hey");
-			}
-		};
+		std::string	            _SortStack(char **, int);
+        size_t                  _ShowSize();
+
+};
+
+class Doubles: public std::exception
+{
+	const char* what() const throw();
+};
+class Empty: public std::exception
+{
+	const char* what() const throw();
+};
+class BadArg: public std::exception
+{
+	const char* what() const throw();
 };
 
 template <typename Container, typename Pairs>
@@ -90,62 +165,61 @@ template <typename Container, typename Pairs>
 PmergeMe<Container, Pairs>::PmergeMe(const PmergeMe& other)
 {
     CLASS("Constructor by copy", "PmergeMe");
-    if (this == &other)
-        return ;
+	if (this == &other)
+		return ;
+	this->_numbers = other._numbers;
 }
 
 template <typename Container, typename Pairs>
 PmergeMe<Container, Pairs>& PmergeMe<Container, Pairs>::operator= (const PmergeMe& other)
 {
     CLASS("Operand = Constructor", "PmergeMe");
-    if (this == &other)
-        return (*this);
+	if (this == &other)
+		return (*this);
+	this->_numbers = other._numbers;
     return (*this);
 }
+template <typename Container, typename Pairs>
+size_t  PmergeMe<Container, Pairs>::_ShowSize()
+{
+    return (_numbers.size());
+}
+
 
 template <typename Container, typename Pairs>
-void PmergeMe<Container, Pairs>::_SortStack(char **tab, int size)
+std::string PmergeMe<Container, Pairs>::_SortStack(char **tab, int size)
 {
 	this->_CreateStack(tab, size);
     this->out << "Before:   ";
     this->_print_Sort(_numbers);
     this->_createPairs();
     this->_sortPairs();
-    this->_insertByFirst();
-    this->_insertmergeSeconds();
+	std::sort(_pairs.begin(), _pairs.end());
+    this->_MergeInsertSort();
     this->out << "After:    ";
     this->_print_Sort(_numbers);
-	std::cout << this->out.str();
+	return (this->out.str());
 }
 
 template <typename Container, typename Pairs>
 void PmergeMe<Container, Pairs>::_CreateStack(char **tab, int size)
 {
     for (int i = 0; i < size; i++) {
-        try {
-            int num = std::stoi(tab[i]);
+            int num = my_atoi(tab[i]);
             this->_numbers.push_back(num);
-        } catch (const std::invalid_argument& e) {
-            std::cerr << "Invalid argument: " << tab[i] << std::endl;
-        } catch (const std::out_of_range& e) {
-            std::cerr << "Argument out of range: " << tab[i] << std::endl;
-        }
     }
-    
     Container double_check;
-    typename Container::iterator __it;
-    typename Container::iterator __ite;
-    __it = _numbers.begin();
-    __ite = _numbers.end();
-    while (__it != __ite)
+    _numbers_it = _numbers.begin();
+    _numbers_ite = _numbers.end();
+    while (_numbers_it != _numbers_ite)
     {
-        if (std::find(double_check.begin(), double_check.end(), *__it) != double_check.end())
+        if (std::find(double_check.begin(), double_check.end(), *_numbers_it) != double_check.end())
         {
-            std::cerr << "Multiple iterations of the number " << *__it << std::endl;
-            throw PmergeMe::Doubles();
+            std::cerr << *_numbers_it;
+            throw Doubles();
         }
-        double_check.push_back(*__it);
-        __it++;
+        double_check.push_back(*_numbers_it);
+        _numbers_it++;
     }
 }
 
@@ -153,18 +227,16 @@ template <typename Container, typename Pairs>
 void PmergeMe<Container, Pairs>::_createPairs()
 {
     int     a;
-    int     b;
+	typename Container::iterator 						_numbers_ite_minus_one;
 
     _numbers_it = _numbers.begin();
     _numbers_ite = _numbers.end();
-    _numbers_ite_plus_one = ++_numbers.end();
     _numbers_ite_minus_one = --_numbers.end();
     while (_numbers_it != _numbers_ite && _numbers_it != _numbers_ite_minus_one)
     {
         a = *_numbers_it;
         ++_numbers_it;
-        b = *_numbers_it;
-        _setOne.push_back(std::pair<int, int>(a, b));
+        _pairs.push_back(std::pair<int, int>(a, *_numbers_it));
         ++_numbers_it;
     }
     this->_impair = 0;
@@ -175,48 +247,26 @@ void PmergeMe<Container, Pairs>::_createPairs()
 template <typename Container, typename Pairs>
 void PmergeMe<Container, Pairs>::_sortPairs()
 {
-    _setOne_it = _setOne.begin();
-    _setOne_ite = _setOne.end();
-    while (_setOne_it != _setOne_ite)
+    _pairs_it = _pairs.begin();
+    _pairs_ite = _pairs.end();
+    while (_pairs_it != _pairs_ite)
     {
-        if ((*_setOne_it).first > (*_setOne_it).second)
-            std::swap((*_setOne_it).first, (*_setOne_it).second);
-        _setOne_it++;
+        if ((*_pairs_it).first > (*_pairs_it).second)
+            std::swap((*_pairs_it).first, (*_pairs_it).second);
+        _pairs_it++;
     }
 }
 
 template <typename Container, typename Pairs>
-void PmergeMe<Container, Pairs>::_insertByFirst()
-{
-    typename std::vector<std::pair<int, int> >::iterator _setTwo_it_ite_minus_one;
-    
-    _setTwo_it.insert(_setTwo_it_it, *_setOne.begin());
-    _setOne.erase(_setOne.begin());
-    _setOne_it = _setOne.begin();
-    _setOne_ite = _setOne.end();
-    while (_setOne_it != _setOne_ite)
-    {
-        _setTwo_it_it = _setTwo_it.begin();
-        _setTwo_it_ite = --_setTwo_it.end();
-        while (_setTwo_it_ite >= _setTwo_it_it && (*_setOne_it).first < (*(_setTwo_it_ite)).first)
-            _setTwo_it_ite--;
-        _setTwo_it.insert(++_setTwo_it_ite, *_setOne_it);
-        _setOne.erase(_setOne_it);
-        _setOne_it = _setOne.begin();
-        _setOne_ite = _setOne.end();
-    }
-}
-
-template <typename Container, typename Pairs>
-void PmergeMe<Container, Pairs>::_insertmergeSeconds()
+void PmergeMe<Container, Pairs>::_MergeInsertSort()
 {
     _numbers.clear();
-    _setTwo_it_it = _setTwo_it.begin();
-    _setTwo_it_ite = _setTwo_it.end();
-    while (_setTwo_it_it != _setTwo_it_ite)
+    _pairs_it = _pairs.begin();
+    _pairs_ite = _pairs.end();
+    while (_pairs_it != _pairs_ite)
     {
-        _numbers.push_back((*_setTwo_it_it).first);
-        _setTwo_it_it++;
+        _numbers.push_back((*_pairs_it).first);
+        _pairs_it++;
     }
     if (this->_impair)
     {
@@ -226,16 +276,16 @@ void PmergeMe<Container, Pairs>::_insertmergeSeconds()
                 _numbers_ite--;
             _numbers.insert(++_numbers_ite, this->_impair);
     }
-    _setOne_it = _setTwo_it.begin();
-    _setOne_ite = _setTwo_it.end();
-    while (_setOne_it != _setOne_ite)
+    _pairs_it = _pairs.begin();
+    _pairs_ite = _pairs.end();
+    while (_pairs_it != _pairs_ite)
     {
             _numbers_it = _numbers.begin();
             _numbers_ite = --_numbers.end();
-            while (_numbers_ite >= _numbers_it && (*_setOne_it).second < *(_numbers_ite))
+            while (_numbers_ite >= _numbers_it && (*_pairs_it).second < *(_numbers_ite))
                 _numbers_ite--;
-            _numbers.insert(++_numbers_ite, (*_setOne_it).second);
-        _setOne_it++;
+            _numbers.insert(++_numbers_ite, (*_pairs_it).second);
+        _pairs_it++;
     }
 }
 

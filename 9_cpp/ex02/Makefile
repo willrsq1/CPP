@@ -1,7 +1,7 @@
 ### COMPILATION ###
 
 CC      = c++
-FLAGS   = -Wall -Wextra -Werror -fsanitize=address
+FLAGS   = -Wall -Wextra -Werror -std=c++98
 
 ### EXECUTABLE ###
 
@@ -24,6 +24,9 @@ $(NAME): $(OBJS)
 %.o: %.cpp *.hpp
 	$(CC) $(FLAGS) -c -o $@ $<
 
+# template: clean
+# 	@$(MAKE)
+	
 clean:
 	rm -rf $(OBJS)
 
@@ -32,4 +35,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re template
