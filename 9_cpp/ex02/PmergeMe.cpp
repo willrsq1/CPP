@@ -1,5 +1,7 @@
 #include "PmergeMe.hpp"
 
+#if TEMPLATE == 1
+
 int	my_atoi(char *s)
 {
 	long	result;
@@ -35,7 +37,7 @@ const char* BadArg::what() const throw()
 	return (": not a positive int");
 }
 
-#if TEMPLATE == 0
+#elif TEMPLATE == 0
 
 PmergeMe::PmergeMe()
 {
@@ -69,7 +71,7 @@ void PmergeMe::VSortMergeAlgo(char **tab, int size)
 {
     for (int i = 0; i < size; i++) {
         try {
-            int num = std::stoi(tab[i]);
+            int num = std::atoi(tab[i]);
             this->Vnumbers.push_back(num);
         } catch (const std::invalid_argument& e) {
             std::cerr << "Invalid argument: " << tab[i] << std::endl;
@@ -234,7 +236,7 @@ void PmergeMe::LSortMergeAlgo(char **tab, int size)
 {
     for (int i = 0; i < size; i++) {
         try {
-            int num = std::stoi(tab[i]);
+            int num = std::atoi(tab[i]);
             this->Lnumbers.push_back(num);
         } catch (const std::invalid_argument& e) {
             std::cerr << "Invalid argument: " << tab[i] << std::endl;

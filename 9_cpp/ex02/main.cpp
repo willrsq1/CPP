@@ -34,16 +34,19 @@ int main(int argc, char **argv)
 	try
 	{
 		time_t	start = ft_time_microsec();
+		time_t	spent_time;
 		std::string str;
 
 		str = s._SortStack(&argv[1], argc - 1);
+		spent_time = ft_time_microsec() - start;
 		std::cout << str;
 		std::cout << "Sequence of " << s._ShowSize() << " positive ints.\n";
-		display_time(ft_time_microsec() - start, "vector");
+		display_time(spent_time, "vector");
 
 		start = ft_time_microsec();
 		t._SortStack(&argv[1], argc - 1);
-		display_time(ft_time_microsec() - start, "deque");
+		spent_time = ft_time_microsec() - start;
+		display_time(spent_time, "deque");
 	}
 	catch(const std::exception& e)
 	{
@@ -66,8 +69,13 @@ int main(int argc, char **argv)
 	{
 		PmergeMe s;
 
+		time_t	start = ft_time_microsec();
+		time_t	spent_time;
+
 		s.VSortMergeAlgo(&argv[1], argc - 1);
-		s.LSortMergeAlgo(&argv[1], argc - 1);
+		spent_time = ft_time_microsec() - start;
+		display_time(spent_time, "vector");
+		// s.LSortMergeAlgo(&argv[1], argc - 1);
 		return (0);
 	}
 	catch(const std::exception& e)
