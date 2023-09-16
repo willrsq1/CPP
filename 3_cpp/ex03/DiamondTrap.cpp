@@ -6,7 +6,7 @@ DiamondTrap::DiamondTrap(/* args */)
 	std::cout << "Called Diamond Trap Constructor" << std::endl;
 	this->_Name = "No_name";
 	this->_HitPoints = this->HitPoints;
-	this->_EnergyPoints = get_EP();
+	this->_EnergyPoints = this->get_EP();
 	this->_AttackDamage = this->AttackDamage;
 }
 
@@ -16,7 +16,7 @@ DiamondTrap::DiamondTrap(std::string name)
 	this->_Name = name;
 	ClapTrap::_Name = name + "_clap_name";
 	this->_HitPoints = this->HitPoints;
-	this->_EnergyPoints = get_EP();
+	this->_EnergyPoints = this->get_EP();
 	this->_AttackDamage = this->AttackDamage;
 }
 

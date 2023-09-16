@@ -18,7 +18,7 @@ int	my_atoi(char *s)
 	}
 	if (s[i] || result > INT_MAX)
 	{
-		std::cerr << s;
+		std::cout << s;
 		throw BadArg();
 	}
 	return (result);
@@ -74,9 +74,9 @@ void PmergeMe::VSortMergeAlgo(char **tab, int size)
             int num = std::atoi(tab[i]);
             this->Vnumbers.push_back(num);
         } catch (const std::invalid_argument& e) {
-            std::cerr << "Invalid argument: " << tab[i] << std::endl;
+            std::cout << "Invalid argument: " << tab[i] << std::endl;
         } catch (const std::out_of_range& e) {
-            std::cerr << "Argument out of range: " << tab[i] << std::endl;
+            std::cout << "Argument out of range: " << tab[i] << std::endl;
         }
     }
 	
@@ -89,7 +89,7 @@ void PmergeMe::VSortMergeAlgo(char **tab, int size)
 	{
 		if (std::find(double_check.begin(), double_check.end(), *V_it) != double_check.end())
 		{
-			std::cerr << "Multiple iterations of the number " << *V_it << std::endl;
+			std::cout << "Multiple iterations of the number " << *V_it << std::endl;
 			throw PmergeMe::Doubles();
 		}
 		double_check.push_back(*V_it);
@@ -239,9 +239,9 @@ void PmergeMe::LSortMergeAlgo(char **tab, int size)
             int num = std::atoi(tab[i]);
             this->Lnumbers.push_back(num);
         } catch (const std::invalid_argument& e) {
-            std::cerr << "Invalid argument: " << tab[i] << std::endl;
+            std::cout << "Invalid argument: " << tab[i] << std::endl;
         } catch (const std::out_of_range& e) {
-            std::cerr << "Argument out of range: " << tab[i] << std::endl;
+            std::cout << "Argument out of range: " << tab[i] << std::endl;
         }
     }
 	
@@ -254,7 +254,7 @@ void PmergeMe::LSortMergeAlgo(char **tab, int size)
 	{
 		if (std::find(double_check.begin(), double_check.end(), *L_it) != double_check.end())
 		{
-			std::cerr << "Multiple iterations of the number " << *L_it << std::endl;
+			std::cout << "Multiple iterations of the number " << *L_it << std::endl;
 			throw PmergeMe::Doubles();
 		}
 		double_check.push_back(*L_it);

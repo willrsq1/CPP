@@ -46,4 +46,16 @@ int	main()
 
 	l.takeDamage(100);
 	f.highFivesGuys();
+
+
+	//IMPORTANT TESTS
+	ClapTrap *guy = new ScavTrap("Emma");
+
+	guy->attack("la sal");
+
+	delete guy;
+	guy = new FragTrap("Haaaaalloo");
+	guy->attack("aaaaa");
+	guy->beRepaired(100);
+	delete guy;
 }

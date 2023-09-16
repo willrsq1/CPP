@@ -10,13 +10,20 @@ int	main()
 	d.beRepaired(0);
 	d.attack("Jack");
 	std::cout << d.get_EP() << std::endl;
-	int i = 5;
-	while (i--)
-		d.beRepaired(0);
 	d.whoAmI();
 	d.highFivesGuys();
 	d.guardGate();
 	d.show_Attack_Damage();
 	d.show_Energy_Points();
 	d.show_Hit_Points();
+	ClapTrap *he = new DiamondTrap("jack");
+	he->attack("emily");
+	he->beRepaired(10);
+	he->takeDamage(100);
+	for (size_t i = 0; i < 50; i++)
+	{
+		he->beRepaired(0);
+	}
+	delete he;
+
 }

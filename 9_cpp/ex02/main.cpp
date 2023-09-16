@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 {
 	if (argc < 3)
 	{
-		std::cerr << "Not a valid arg (not a sequence of positive ints).\n";
+		std::cout << "Not a valid arg (not a sequence of positive ints).\n";
 		return (1);
 	}
 
@@ -50,7 +50,7 @@ int main(int argc, char **argv)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << '\n';
 		return (1);
 	}
 	return (0);
@@ -62,7 +62,7 @@ int main(int argc, char **argv)
 {
 	if (argc < 3)
 	{
-		std::cerr << "Not a valid arg (not a sequence of positive ints).\n";
+		std::cout << "Not a valid arg (not a sequence of positive ints).\n";
 		return (1);
 	}
 	try
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << "Exception: "<< e.what() << '\n';
+		std::cout << "Exception: "<< e.what() << '\n';
 		return (1);
 	}
 	return (0);		

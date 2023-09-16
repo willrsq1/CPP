@@ -4,7 +4,7 @@ Zombie	*newZombie(std::string name)
 {
 	Zombie	*Zombie_ptr;
 
-	Zombie_ptr = new (std::nothrow) Zombie(name);
+	Zombie_ptr = new Zombie(name);
 	if (Zombie_ptr == NULL)
 	{
 		std::cerr << "New Allocation failed." << std::endl;

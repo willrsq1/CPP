@@ -215,7 +215,7 @@ void PmergeMe<Container, Pairs>::_CreateStack(char **tab, int size)
     {
         if (std::find(double_check.begin(), double_check.end(), *_numbers_it) != double_check.end())
         {
-            std::cerr << *_numbers_it;
+            std::cout << *_numbers_it;
             throw Doubles();
         }
         double_check.push_back(*_numbers_it);
