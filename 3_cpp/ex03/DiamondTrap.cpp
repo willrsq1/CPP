@@ -1,23 +1,25 @@
 #include "DiamondTrap.hpp"
 
 
-DiamondTrap::DiamondTrap(/* args */)
+DiamondTrap::DiamondTrap()
 {
 	std::cout << "Called Diamond Trap Constructor" << std::endl;
 	this->_Name = "No_name";
-	this->_HitPoints = this->HitPoints;
-	this->_EnergyPoints = this->get_EP();
-	this->_AttackDamage = this->AttackDamage;
+	this->ClapTrap::_Name = this->_Name + "_clap_name";
+	this->_HitPoints = this->FragTrap::_HitPoints;
+	this->_EnergyPoints = this->ScavTrap::_ScavEnergy;
+	this->_AttackDamage = this->FragTrap::_AttackDamage;
 }
 
 DiamondTrap::DiamondTrap(std::string name)
 {
 	std::cout << "Called Diamond Trap Constructor with Name Input" << std::endl;
 	this->_Name = name;
-	ClapTrap::_Name = name + "_clap_name";
-	this->_HitPoints = this->HitPoints;
-	this->_EnergyPoints = this->get_EP();
-	this->_AttackDamage = this->AttackDamage;
+	this->ClapTrap::_Name = name + "_clap_name";
+	this->_HitPoints = this->FragTrap::_HitPoints;
+	this->_EnergyPoints = this->ScavTrap::_ScavEnergy;
+	this->_AttackDamage = this->FragTrap::_AttackDamage;
+	std::cout << this->_HitPoints << " " << this->_EnergyPoints << " " << this->_AttackDamage << std::endl;
 }
 
 DiamondTrap::~DiamondTrap()
@@ -25,14 +27,27 @@ DiamondTrap::~DiamondTrap()
 	std::cout << "Called Diamond Trap Destructor" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& other): ClapTrap(), FragTrap(), ScavTrap() 
+DiamondTrap::DiamondTrap(const DiamondTrap& other): ClapTrap(), ScavTrap(), FragTrap()
 {
 	std::cout << "Called Diamond Trap Copy Constructor" << std::endl;
 	this->_Name = other._Name;
-	ClapTrap::_Name = this->_Name + "_clap_name";
-	this->_HitPoints = other.HitPoints;
-	this->_EnergyPoints = get_EP();
-	this->_AttackDamage = other.HitPoints;
+	this->ClapTrap::_Name = this->_Name + "_clap_name";
+	this->_HitPoints = other._HitPoints;
+	this->_EnergyPoints = other._EnergyPoints;
+	this->_AttackDamage = other._AttackDamage;
+}
+
+DiamondTrap& DiamondTrap::operator= (const DiamondTrap& other)
+{
+	std::cout << "Called DiamondTrap Copy Assignment Operator" << std::endl;
+	if (this == &other)
+		return (*this);
+	this->_Name = other._Name;
+	this->ClapTrap::_Name = this->_Name + "_clap_name";
+	this->_AttackDamage = other._AttackDamage;
+	this->_EnergyPoints = other._EnergyPoints;
+	this->_HitPoints = other._HitPoints;
+	return (*this);
 }
 
 void	DiamondTrap::whoAmI()

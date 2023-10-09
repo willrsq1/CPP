@@ -9,7 +9,6 @@ int	main()
 
 	d.beRepaired(0);
 	d.attack("Jack");
-	std::cout << d.get_EP() << std::endl;
 	d.whoAmI();
 	d.highFivesGuys();
 	d.guardGate();

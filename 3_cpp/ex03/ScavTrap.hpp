@@ -5,6 +5,8 @@
 
 class ScavTrap: virtual public ClapTrap
 {
+	protected:
+		int		_ScavEnergy;
 	public:
 		ScavTrap();
 		ScavTrap(std::string);
@@ -13,7 +15,6 @@ class ScavTrap: virtual public ClapTrap
 		ScavTrap& operator= (const ScavTrap& other);
 		void attack(const std::string& target);
 		void	guardGate();
-		int		get_EP();
 };
 
 #endif

@@ -7,6 +7,7 @@ ScavTrap::ScavTrap()
 	this->_Name = "no name";
 	this->_AttackDamage = 20;
 	this->_EnergyPoints = 50;
+	this->_ScavEnergy = 50;
 	this->_HitPoints = 100;
 }
 
@@ -16,6 +17,7 @@ ScavTrap::ScavTrap(std::string name)
 	this->_Name = name;
 	this->_AttackDamage = 20;
 	this->_EnergyPoints = 50;
+	this->_ScavEnergy = 50;
 	this->_HitPoints = 100;
 }
 
@@ -75,9 +77,4 @@ void	ScavTrap::guardGate()
 	}
 	this->_EnergyPoints -= 1;
 	std::cout << "ScavTrap " << this->_Name << " has entered the mode: Gate Keeper." << std::endl;
-}
-
-int		ScavTrap::get_EP()
-{
-	return (this->_EnergyPoints);
 }

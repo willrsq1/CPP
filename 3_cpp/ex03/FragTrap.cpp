@@ -1,22 +1,22 @@
 #include "FragTrap.hpp"
 
 
-FragTrap::FragTrap()
+FragTrap::FragTrap(/* args */)
 {
 	std::cout << "Called FragTrap Constructor" << std::endl;
-	this->Name = "Noname";
-	this->AttackDamage = 30;
-	this->EnergyPoints = 100;
-	this->HitPoints = 100;
+	this->_Name = "No_name";
+	this->_AttackDamage = 30;
+	this->_EnergyPoints = 100;
+	this->_HitPoints = 100;
 }
 
 FragTrap::FragTrap(std::string name)
 {
 	std::cout << "Called FragTrap Constructor with Name Input" << std::endl;
-	this->Name = name;
-	this->AttackDamage = 30;
-	this->EnergyPoints = 100;
-	this->HitPoints = 100;
+	this->_Name = name;
+	this->_AttackDamage = 30;
+	this->_EnergyPoints = 100;
+	this->_HitPoints = 100;
 }
 
 FragTrap::~FragTrap()
@@ -27,10 +27,10 @@ FragTrap::~FragTrap()
 FragTrap::FragTrap(const FragTrap& other): ClapTrap(other)
 {
 	std::cout << "Called FragTrap Copy Constructor" << std::endl;
-	this->Name = other.Name;
-	this->AttackDamage = other.AttackDamage;
-	this->EnergyPoints = other.EnergyPoints;
-	this->HitPoints = other.HitPoints;
+	this->_Name = other._Name;
+	this->_AttackDamage = other._AttackDamage;
+	this->_EnergyPoints = other._EnergyPoints;
+	this->_HitPoints = other._HitPoints;
 }
 
 FragTrap& FragTrap::operator= (const FragTrap& other)
@@ -38,25 +38,25 @@ FragTrap& FragTrap::operator= (const FragTrap& other)
 	std::cout << "Called FragTrap Copy Assignment Operator" << std::endl;
 	if (this == &other)
 		return (*this);
-	this->Name = other.Name;
-	this->AttackDamage = other.AttackDamage;
-	this->EnergyPoints = other.EnergyPoints;
-	this->HitPoints = other.HitPoints;
+	this->_Name = other._Name;
+	this->_AttackDamage = other._AttackDamage;
+	this->_EnergyPoints = other._EnergyPoints;
+	this->_HitPoints = other._HitPoints;
 	return (*this);
 }
 
 void	FragTrap::highFivesGuys(void)
 {
-	if (this->HitPoints <= 0)
+	if (this->_HitPoints <= 0)
 	{
-		std::cerr << "FragTrap " << this->Name << " is dead. It can't ask for high fives." << std::endl;
+		std::cerr << "FragTrap " << this->_Name << " is dead. It can't ask for high fives." << std::endl;
 		return ;
 	}
-	if (this->EnergyPoints <= 0)
+	if (this->_EnergyPoints <= 0)
 	{
-		std::cerr << "FragTrap " << this->Name << " is out of energy. It can't ask for high fives." << std::endl;
+		std::cerr << "FragTrap " << this->_Name << " is out of energy. It can't ask for high fives." << std::endl;
 		return ;
 	}
-	this->EnergyPoints -= 1;
-	std::cout << "Hey guys ! I'm " << this->Name << ", will you high-five me ?" << std::endl;
+	this->_EnergyPoints -= 1;
+	std::cout << "Hey guys ! I'm " << this->_Name << ", will you high-five me ?" << std::endl;
 }
