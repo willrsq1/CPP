@@ -11,6 +11,7 @@ class Cat: public AAnimal
 		Cat(const Cat&);
 		Cat& operator= (const Cat&);
 		void	ShowBrainIdea(int n);
+		void	MakeSound() const;
 };
 
 #endif

@@ -34,16 +34,6 @@ Animal& Animal::operator= (const Animal& other)
 	return (*this);
 }
 
-void Animal::makeSound() const
-{
-	if (this->type == "Cat")
-		std::cout << "Meooooooow" << std::endl;
-	else if (this->type == "Dog")
-		std::cout << "Waf Waf" << std::endl;
-	else
-		std::cout << "......" << std::endl;
-}
-
 std::string	Animal::getType() const
 {
 	return (this->type);

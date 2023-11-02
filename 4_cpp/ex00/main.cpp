@@ -41,7 +41,7 @@ delete[] tab;
 
 
 const WrongAnimal* Meta = new WrongAnimal();
-const WrongAnimal* I = new WrongCat();
+const WrongCat* I = new WrongCat();
 std::cout << I->getType() << " " << std::endl;
 I->makeSound(); //will output the cat sound!
 Meta->makeSound();

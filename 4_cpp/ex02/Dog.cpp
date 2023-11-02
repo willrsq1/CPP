@@ -45,3 +45,11 @@ void Dog::ShowBrainIdea(int n)
 	else
 		std::cout << "Just an Dog without ideas" << std::endl;
 }
+
+void Dog::MakeSound() const
+{
+	if (this->type == "Dog")
+		std::cout << "Waf waf waf" << std::endl;
+	else
+		std::cout << "......" << std::endl;
+}

@@ -45,3 +45,11 @@ void Cat::ShowBrainIdea(int n)
 	else
 		std::cout << "Just an Cat without ideas" << std::endl;
 }
+
+void Cat::MakeSound() const
+{
+	if (this->type == "Cat")
+		std::cout << "Meooooooow" << std::endl;
+	else
+		std::cout << "......" << std::endl;
+}

@@ -97,25 +97,25 @@ void Character::unequip(int index)
 
 void Character::newMateria(AMateria* ptr)
 {
-	t_Unequiped_Materia*			_newUnequiped;
-	static t_Unequiped_Materia*		_lastUnequiped;
+	t_lst_Materia*				_lst;
+	static t_lst_Materia*		_lastlst;
 
-	_newUnequiped = new t_Unequiped_Materia;
-	_newUnequiped->_ptrMateria = ptr;
-	_newUnequiped->next = NULL;
+	_lst = new t_lst_Materia;
+	_lst->_ptrMateria = ptr;
+	_lst->next = NULL;
 	if (!this->_List)
 	{
-		this->_List = _newUnequiped;
-		_lastUnequiped = this->_List;
+		this->_List = _lst;
+		_lastlst = this->_List;
 		return ;
 	}
-	_lastUnequiped->next = _newUnequiped;
-	_lastUnequiped = _newUnequiped;
+	_lastlst->next = _lst;
+	_lastlst = _lst;
 
 }
 void Character::deleteMaterias()
 {
-	t_Unequiped_Materia*		temp;
+	t_lst_Materia*		temp;
 
 	while (this->_List)
 	{

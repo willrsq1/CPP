@@ -11,6 +11,7 @@ class Dog: public AAnimal
 		Dog(const Dog&);
 		Dog& operator= (const Dog&);
 		void	ShowBrainIdea(int n);
+		void MakeSound() const;
 };
 
 #endif

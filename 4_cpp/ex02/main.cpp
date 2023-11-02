@@ -16,10 +16,10 @@ cat2 = Cat(cat3);
 AAnimal *big = new Cat;
 AAnimal *big2 = new Dog;
 
-big->makeSound();
+big->MakeSound();
 delete big;
 big = big2;
-big->makeSound();
+big->MakeSound();
 delete big2;
 // AAnimal hey;
 // return 1;
@@ -37,7 +37,7 @@ delete big2;
 // }
 // for (size_t i = 0; i < 10; i++)
 // {
-// 	tab1[i]->makeSound();
+// 	tab1[i]->MakeSound();
 // 	tab1[i]->ShowBrainIdea(i * 2);
 // 	delete tab1[i];
 // }
@@ -61,7 +61,7 @@ for (size_t i = 0; i < 10; i++)
 }
 for (size_t i = 0; i < 10; i++)
 {
-	tab[i]->makeSound();
+	tab[i]->MakeSound();
 	tab[i]->ShowBrainIdea(i * 2);
 	delete tab[i];
 }
@@ -70,17 +70,17 @@ delete[] tab;
 
 
 //test3
-Dog **tabD = new Dog*[10];
-for (size_t i = 0; i < 10; i++)
-{
-		tabD[i] = new Dog();
-}
-for (size_t i = 0; i < 10; i++)
-{
-	tabD[i]->makeSound();
-	tabD[i]->ShowBrainIdea(i);
-	delete tabD[i];
-}
-delete[] tabD;
+// Dog **tabD = new Dog*[10];
+// for (size_t i = 0; i < 10; i++)
+// {
+// 		tabD[i] = new Dog();
+// }
+// for (size_t i = 0; i < 10; i++)
+// {
+// 	tabD[i]->MakeSound();
+// 	tabD[i]->ShowBrainIdea(i);
+// 	delete tabD[i];
+// }
+// delete[] tabD;
 return 0;
 }
