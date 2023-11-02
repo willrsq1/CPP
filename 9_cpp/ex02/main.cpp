@@ -75,7 +75,15 @@ int main(int argc, char **argv)
 		s.VSortMergeAlgo(&argv[1], argc - 1);
 		spent_time = ft_time_microsec() - start;
 		display_time(spent_time, "vector");
-		// s.LSortMergeAlgo(&argv[1], argc - 1);
+		{
+			
+			time_t	start = ft_time_microsec();
+			time_t	spent_time;
+
+			s.LSortMergeAlgo(&argv[1], argc - 1);
+			spent_time = ft_time_microsec() - start;
+			display_time(spent_time, "dqueue");
+		}
 		return (0);
 	}
 	catch(const std::exception& e)

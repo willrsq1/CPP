@@ -64,22 +64,22 @@ Form& Form::operator= (const Form& other)
 
 std::string Form::getName()
 {
-	return (this->_Name);
+	return (_Name);
 }
 
 bool Form::getSigned()
 {
-	return (this->_Signed);
+	return (_Signed);
 }
 
 int Form::getSignGrade()
 {
-	return (this->_signGrade);
+	return (_signGrade);
 }
 
 int Form::getExecGrade()
 {
-	return (this->_execGrade);
+	return (_execGrade);
 }
 
 void Form::beSigned(Bureaucrat& guy)

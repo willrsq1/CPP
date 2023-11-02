@@ -16,7 +16,6 @@ class RPN
 
 		void		ListInit(std::list<std::string> lst);
 		void		_FtCalcul(std::string s);
-	protected:
 
 	public:
 		RPN();

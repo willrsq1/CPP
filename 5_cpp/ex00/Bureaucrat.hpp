@@ -16,8 +16,8 @@
 class Bureaucrat
 {
 	private:
-		const std::string			_Name;
-		int					_Rank;
+		const std::string	_Name;
+		short				_Rank;
 		void				changeRank(int);
 	protected:
 
@@ -27,7 +27,7 @@ class Bureaucrat
 		~Bureaucrat();
 		Bureaucrat(const Bureaucrat&);
 		Bureaucrat& operator= (const Bureaucrat&);
-		std::string		getName();
+		std::string		getName() const;
 		void			incrGrade();
 		void			decrGrade();
 		int				getRank();
@@ -37,6 +37,10 @@ class Bureaucrat
 		const char* what() const throw();
 	};
 	class GradeTooLowException: public std::exception
+	{
+		const char* what() const throw();
+	};
+	class GradeUndefined: public std::exception
 	{
 		const char* what() const throw();
 	};
