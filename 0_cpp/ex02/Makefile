@@ -5,7 +5,7 @@ FLAGS   = -Wall -Wextra -Werror -std=c++98
 
 ### EXECUTABLE ###
 
-NAME    = log
+NAME    = ex02
 
 ### SOURCE FILES ###
 
