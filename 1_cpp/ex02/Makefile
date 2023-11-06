@@ -5,7 +5,7 @@ FLAGS   = -Wall -Wextra -Werror
 
 ### EXECUTABLE ###
 
-NAME    = Zombie_ex02
+NAME    = ex02
 
 ### SOURCE FILES ###
 

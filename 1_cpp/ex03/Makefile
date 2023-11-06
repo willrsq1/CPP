@@ -1,11 +1,11 @@
 ### COMPILATION ###
 
 CC      = c++
-FLAGS   = -Wall -Wextra -Werror
+FLAGS   = -Wall -Wextra -Werror -fsanitize=address
 
 ### EXECUTABLE ###
 
-NAME    = Zombie_ex03
+NAME    = ex03
 
 ### SOURCE FILES ###
 
