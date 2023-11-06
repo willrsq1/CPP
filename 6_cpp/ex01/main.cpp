@@ -30,10 +30,10 @@ int	main()
 	data.c = 'A';
 	data.x = 42;
 
-	std::cout << data.x << std::endl;
+	LOG(data.x);
 	LOG((*(Serializer::deserialize(Serializer::serialize(&data)))).x);
 	// Z a(129291);
-	// LOG(&a);
+	// LOG(a.getZ());
 	// data.ptr = &a;
 	// LOG(((Z)(*(Z*)(Serializer::deserialize(Serializer::serialize(&data))->ptr))).getZ());
 }

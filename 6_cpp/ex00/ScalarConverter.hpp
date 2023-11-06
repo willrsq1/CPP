@@ -24,11 +24,11 @@
 class ScalarConverter
 {
 	private:
+		ScalarConverter();
 
 	protected:
 
 	public:
-		ScalarConverter();
 		~ScalarConverter();
 		ScalarConverter(const ScalarConverter&);
 		ScalarConverter& operator= (const ScalarConverter&);

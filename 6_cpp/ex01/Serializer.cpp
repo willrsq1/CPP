@@ -27,12 +27,12 @@ Serializer& Serializer::operator= (const Serializer& other)
 
 uintptr_t Serializer::serialize(Data* ptr)
 {
-	return (uintptr_t)ptr;
+	return reinterpret_cast<uintptr_t>(ptr);
+	// return (uintptr_t)ptr;
 }
 
 Data* Serializer::deserialize(uintptr_t raw)
 {
-	return (Data *)raw;
+	return reinterpret_cast<Data *>(raw);
+	// return (Data *)raw;
 }
-	// return reinterpret_cast<Data *>(raw);
-	// return reinterpret_cast<uintptr_t>(ptr);

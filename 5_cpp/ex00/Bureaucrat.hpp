@@ -17,7 +17,7 @@ class Bureaucrat
 {
 	private:
 		const std::string	_Name;
-		short				_Rank;
+		int					_Rank;
 		void				changeRank(int);
 	protected:
 

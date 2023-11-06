@@ -9,9 +9,10 @@ int		main()
 	Base::identify(NULL);
 	delete ptr;
 
-	for (size_t i = 0; i < 10; i++)
+	for (size_t i = 0; i < 3; i++)
 	{
 		ptr = Base::generate();
+		std::cout << "New generation." << std::endl;
 		Base::identify(ptr);
 		Base::identify(*ptr);
 		Base::identify(*&*&*&*&*&*&*&*&*&*&*&*ptr);
