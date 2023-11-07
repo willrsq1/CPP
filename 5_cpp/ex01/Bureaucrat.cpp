@@ -34,7 +34,7 @@ Bureaucrat& Bureaucrat::operator= (const Bureaucrat& other)
 	return (*this);
 }
 
-std::string Bureaucrat::getName()
+std::string Bureaucrat::getName() const
 {
 	return (this->_Name);
 }
@@ -64,7 +64,7 @@ void Bureaucrat::changeRank(int new_rank)
 	this->_Rank = new_rank;
 }
 
-int Bureaucrat::getRank()
+int Bureaucrat::getRank() const
 {
 	return (this->_Rank);
 }
@@ -88,7 +88,7 @@ bool Bureaucrat::signForm(Form& form)
 	return (0);
 }
 
-std::ostream& operator<<(std::ostream& out, Bureaucrat& guy)
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& guy)
 {
 	out << "The Bureaucrat [" << guy.getName() << "]'s grade is ";
 	if (guy.getRank() == UNDEFINED)

@@ -116,7 +116,7 @@ void Form::beSigned(Bureaucrat& guy)
 	this->_Signed = 1;
 }
 
-std::ostream& operator<<(std::ostream& out, Form& form)
+std::ostream& operator<<(std::ostream& out, const Form& form)
 {
 	out << "The form [" << form.getName() << "] needs the grade [" << form.getSignGrade() << "] to be signed ";
 	out << "and the grade [" << form.getExecGrade() << "] to be executed.";

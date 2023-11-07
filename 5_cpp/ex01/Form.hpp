@@ -22,10 +22,10 @@ class Form
 		Form(const Form&);
 		Form& operator= (const Form&);
 
-		std::string				getName();
-		bool					getSigned();
-		int						getSignGrade();
-		int						getExecGrade();
+		std::string				getName() const;
+		bool					getSigned() const;
+		int						getSignGrade() const;
+		int						getExecGrade() const;
 
 		void					beSigned(Bureaucrat&);
 		
@@ -39,6 +39,6 @@ class Form
 	};
 };
 
-std::ostream& 	operator<<(std::ostream&, Form&);
+std::ostream& 	operator<<(std::ostream&, const Form&);
 
 #endif

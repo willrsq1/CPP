@@ -22,7 +22,7 @@ class Form;
 class Bureaucrat
 {
 	private:
-		const std::string			_Name;
+		const std::string	_Name;
 		int					_Rank;
 		void				changeRank(int);
 	protected:
@@ -33,7 +33,7 @@ class Bureaucrat
 		~Bureaucrat();
 		Bureaucrat(const Bureaucrat&);
 		Bureaucrat& operator= (const Bureaucrat&);
-		std::string		getName();
+		std::string		getName() const;
 		void			incrGrade();
 		void			decrGrade();
 		int				getRank() const;
@@ -50,6 +50,6 @@ class Bureaucrat
 	};
 };
 
-std::ostream& 	operator<<(std::ostream&, Bureaucrat&);
+std::ostream& 	operator<<(std::ostream&, const Bureaucrat&);
 
 #endif

@@ -62,22 +62,22 @@ Form& Form::operator= (const Form& other)
 	return (*this);
 }
 
-std::string Form::getName()
+std::string Form::getName() const
 {
 	return (_Name);
 }
 
-bool Form::getSigned()
+bool Form::getSigned() const
 {
 	return (_Signed);
 }
 
-int Form::getSignGrade()
+int Form::getSignGrade() const
 {
 	return (_signGrade);
 }
 
-int Form::getExecGrade()
+int Form::getExecGrade() const
 {
 	return (_execGrade);
 }
@@ -93,7 +93,7 @@ void Form::beSigned(Bureaucrat& guy)
 	this->_Signed = 1;
 }
 
-std::ostream& operator<<(std::ostream& out, Form& form)
+std::ostream& operator<<(std::ostream& out, const Form& form)
 {
 	out << "The form [" << form.getName() << "] needs the grade [" << form.getSignGrade() << "] to be signed ";
 	out << "and the grade [" << form.getExecGrade() << "] to be executed.";
