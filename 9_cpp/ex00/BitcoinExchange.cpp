@@ -59,6 +59,8 @@ void BitcoinExchange::DisplayValue(std::string line)
 {
 	int				key = my_input_key_atoi(line.c_str());
 
+	if (checkDateError(line.substr(0,11)) == true)
+		return ;
 	std::map<int, float>::iterator		it = this->_Map.begin();
 	std::map<int, float>::iterator		ite = this->_Map.end();
 
@@ -92,6 +94,8 @@ void BitcoinExchange::GetInitData()
 		{
 			key = my_key_atoi(line.c_str());
 			number = my_number_atoi(line.c_str());
+			if (checkDateError(line.substr(0, 11)) == true)
+				throw BitcoinExchange::BadArg();
 		}
 		catch (const std::exception& e)
 		{
@@ -103,7 +107,42 @@ void BitcoinExchange::GetInitData()
 	}
 }
 
-
+bool BitcoinExchange::checkDateError(const std::string &date)
+{
+	if (date.length() != 11) {
+		std::cerr  << "Error: invalid date format"  << std::endl;
+		return true;
+	}
+	for (size_t i = 0; i < date.length() - 1; i++) {
+		if (i == 4 || i == 7) {
+			if (date[i] != '-') {
+				std::cerr  << "Error: invalid date format"  << std::endl;
+				return true;
+			}
+		}
+		else if (!std::isdigit(date[i])) {
+			std::cerr  << "Error: invalid date format"  << std::endl;
+			return true;
+		}
+	}
+	int day, month, year;
+	year = atoi(date.c_str());
+	month = atoi(date.c_str() + 5);
+	day = atoi(date.c_str() + 8);
+	int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	if (isLeapYear(year)) {
+		days[1] = 29;
+	}
+	if (month < 1 || month > 12) {
+		std::cerr  << "Error: invalid month"  << std::endl;
+		return true;
+	}
+	if (day < 1 || day > days[month - 1]) {
+		std::cerr  << "Error: invalid day"  << std::endl;
+		return true;
+	}
+	return false;
+}
 
 const char * BitcoinExchange::BadOpen::what() const throw()
 {
@@ -128,4 +167,129 @@ const char * BitcoinExchange::BadFirstLine::what() const throw()
 const char * BitcoinExchange::NotPositiveInt::what() const throw()
 {
 	return ("Not a positive int");
+}
+
+int	 BitcoinExchange::my_key_atoi(const char *s)
+{
+	long	result;
+	size_t	i;
+
+	i = 0;
+	result = 0;
+	if (!s || !s[0])
+		throw BitcoinExchange::EmptyArg();
+	while (s[i] && ((s[i] <= '9' && s[i] >= '0') || s[i] == '-'))
+	{
+		if (s[i] != '-')
+			result = result * 10 + (s[i] - 48);
+		i++;
+	}
+	if (s[i] != ',' || result > INT_MAX || i != 10)
+	{
+		std::cerr << s << std::endl;
+		throw BitcoinExchange::BadArg();
+	}
+	return (result);
+}
+
+int	 BitcoinExchange::my_input_key_atoi(const char *s)
+{
+	long	result;
+	size_t	i;
+
+	i = 0;
+	result = 0;
+	if (!s || !s[0])
+		throw BitcoinExchange::EmptyArg();
+	while (s[i] && ((s[i] <= '9' && s[i] >= '0') || s[i] == '-'))
+	{
+		if (s[i] != '-')
+			result = result * 10 + (s[i] - 48);
+		i++;
+	}
+	if (s[i] != ' ' || result > INT_MAX)
+	{
+		std::cout << s << ": " ;
+		throw BitcoinExchange::BadArg();
+	}
+	return (result);
+}
+
+float	 BitcoinExchange::my_input_number_atoi(const char *s)
+{
+	long	result;
+	size_t	i;
+	size_t	y;
+
+	i = 0;
+	result = 0;
+	if (!s || !s[0])
+		throw BitcoinExchange::EmptyArg();
+	while (s[i] && s[i] != '|')
+		i++;
+	if (!s[i] || !s[i + 1] || s[i + 1] != ' ')
+		throw BitcoinExchange::BadArg();
+	i += 2;
+	y = i;
+	while (s[i] && ((s[i] <= '9' && s[i] >= '0') || s[i] == '.'))
+	{
+		if (s[i] != '.')
+			result = result * 10 + (s[i] - 48);
+		if (result == INT_MAX && s[i] == '.' && s[i + 1] && s[i + 1] != '0')
+			throw BitcoinExchange::BadArg();
+		i++;
+	}
+	if (s[i])
+		throw BitcoinExchange::NotPositiveInt();
+	if (s[i] || result > INT_MAX)
+	{
+		std::cerr << s << std::endl;
+		throw BitcoinExchange::BadArg();
+	}
+	return (std::atof(&s[y]));
+}
+
+float	 BitcoinExchange::my_number_atoi(const char *s)
+{
+	long	result;
+	size_t	i;
+	size_t	y;
+
+	i = 0;
+	result = 0;
+	if (!s || !s[0])
+		throw BitcoinExchange::EmptyArg();
+	while (s[i] && s[i] != ',')
+		i++;
+	if (!s[i] || !s[i + 1])
+		throw BitcoinExchange::BadArg();
+	i++;
+	y = 0;
+	size_t	pos = i;
+	while (s[i] && ((s[i] <= '9' && s[i] >= '0') || s[i] == '.'))
+	{
+		if (s[i] != '.' && y == 0)
+			result = result * 10 + (s[i] - 48);
+		if (s[i] == '.')
+			y++;
+		i++;
+	}
+	if (s[i] || result > INT_MAX || y > 1)
+	{
+		std::cerr << s << std::endl;
+		throw BitcoinExchange::BadArg();
+	}
+	return (std::atof(&s[pos]));
+}
+
+
+bool BitcoinExchange::isLeapYear(unsigned int year)
+{
+	if (year % 4 != 0)
+		return false;
+	if (year % 100 != 0)
+		return true;
+	if (year % 400 != 0)
+		return false;
+	return true;
 }

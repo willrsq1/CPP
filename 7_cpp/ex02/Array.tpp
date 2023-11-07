@@ -35,6 +35,10 @@ Array<T>::Array(const Array& other)
 		return ;
 	this->_Tab = new T[*other._Size];
 	this->_Size = new unsigned int(*other._Size);
+	for (size_t i = 0; i < *_Size; i++)
+	{
+		_Tab[i] = other._Tab[i];
+	}
 }
 
 template<typename T>
@@ -43,10 +47,16 @@ Array<T>& Array<T>::operator= (const Array& other)
 	CLASS("Operand = Constructor", "Array");
 	if (this == &other)
 		return (*this);
-	delete[] this->_Tab;
-	delete this->_Size;
+	if (_Tab)
+		delete[] this->_Tab;
+	if (*_Size)
+		delete this->_Size;
 	this->_Tab = new T[*other._Size];
 	this->_Size = new unsigned int(*other._Size);
+	for (size_t i = 0; i < *_Size; i++)
+	{
+		_Tab[i] = other._Tab[i];
+	}
 	return (*this);
 }
 

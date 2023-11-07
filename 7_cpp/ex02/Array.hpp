@@ -21,7 +21,7 @@ class Array
 		~Array();
 		Array(const Array&);
 		Array& operator= (const Array&);
-		T& operator[] (int i)
+		T& operator[] (int i) const
 		{
 			if (i < 0 || i >= (int)*this->_Size)
 				throw std::exception();

@@ -27,8 +27,12 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange&);
 		BitcoinExchange& operator= (const BitcoinExchange&);
 		void			ft_BtcEx(std::string);
-
-
+		bool			checkDateError(const std::string &date);
+		bool			isLeapYear(unsigned int year);
+		float	 		my_number_atoi(const char *s);
+		float	 		my_input_number_atoi(const char *s);
+		int	 			my_input_key_atoi(const char *s);
+		int	 			my_key_atoi(const char *s);
 		
 		class BadOpen: public std::exception
 		{

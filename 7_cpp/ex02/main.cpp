@@ -3,7 +3,6 @@
 int main( void ) {
 	Array<int>	*p = new Array<int>(10);
 	
-
 	for (size_t i = 0; i < (*p).getSize(); i++)
 	{
 		(*(p))[i] = 42;
@@ -21,6 +20,7 @@ int main( void ) {
 	for (size_t i = 0; i < a.getSize(); i++)
 	{
 		std::cout << "Element [" << i << "] is : " << (a)[i]<<std::endl;
+		a[i] = -1306;
 	}
 	std::cout << "Post modif A\n";
 
@@ -34,12 +34,12 @@ int main( void ) {
 
 
 //test modifying B who was copy constructed of a
-	Array<int> B = Array<int>(a);
+	const Array<int> B = Array<int>(a);
 
 	for (size_t i = 0; i < (B).getSize(); i++)
 	{
 		std::cout << "Element [" << i << "] is : " << (B)[i]<<std::endl;
-		B[i] = 17072000;
+		// B[i] = 17072000;
 	}
 	std::cout << "B was modifed\n";
 	for (size_t i = 0; i < (B).getSize(); i++)

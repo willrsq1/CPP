@@ -51,13 +51,11 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat(void) const
 {	
-	// std::cout << "toFloat member function [Fixed] called" << std::endl;
 	return ((float)((float)this->fixed_value / (1 << this->nb_fract_bits)));
 }
 
 int		Fixed::toInt(void) const
 {
-	// std::cout << "toInt member function [Fixed] called" << std::endl;
 	return ((int)(this->fixed_value >> this->nb_fract_bits));
 }
 std::ostream& operator<<(std::ostream& outstream, const Fixed& x)
