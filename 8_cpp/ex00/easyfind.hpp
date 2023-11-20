@@ -26,7 +26,8 @@ template<typename T>
 	typename T::iterator		_Result;
 	ItEasyfind(typename T::iterator start, typename T::iterator end): _Start(start), _End(end){}
 	~ItEasyfind() {}
-	int					 get_Dist(){
+	int					 get_Dist() const
+	{
 		return std::distance(_Start, _Result);
 	}
 };
@@ -34,15 +35,18 @@ template<typename T>
 
 
 	template<typename T>
-void	easyfind(T cont, int nb)
+void	easyfind(T cont, const int nb)
 {
 	ItEasyfind<T>		my_it(cont.begin(), cont.end());
 	
 	my_it._Result = std::find(my_it._Start, my_it._End, nb);
 	if (my_it._Result != my_it._End)
-		std::cout << "result = " << my_it.get_Dist() << std::endl;
+		std::cout << "result = " << my_it.get_Dist() <<  std::endl;
 	else
+	{
+		std::cerr << "for nb [" << nb << "]: ";
 		throw ::Myex();
+	}
 }
 
 #endif

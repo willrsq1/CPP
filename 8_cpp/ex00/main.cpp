@@ -6,11 +6,13 @@ int main()
 
 	std::fill(v.begin(), v.end(), 10);
 	std::fill(v.begin(), v.end() - 10, 15);
-	easyfind(v, 10);
-	std::vector<int> s(1000);
 	try
 	{
-		easyfind(s, -1);
+		easyfind(v, 10);
+		std::vector<int> s(1000);
+		s[717] = 15;
+		easyfind(s, 15);
+		easyfind(s, 9);
 	}
 	catch(const std::exception& e)
 	{
