@@ -47,5 +47,13 @@ I->makeSound(); //will output the cat sound!
 Meta->makeSound();
 delete Meta;
 delete I;
+const WrongCat J;
+J.makeSound();
+const WrongAnimal* fake = new WrongCat();
+fake->makeSound();
+const Animal* one = new Cat();
+one->makeSound();
+delete fake;
+delete one;
 return 0;
 }

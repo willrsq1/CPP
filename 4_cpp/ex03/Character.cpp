@@ -79,9 +79,7 @@ void Character::setNull()
 
 void Character::use(int index, ICharacter& target)
 {
-	if (index < 0 || index >= MATERIA_TAB_SIZE)
-		return ;
-	if (!this->_Tab[index])
+	if (index < 0 || index >= MATERIA_TAB_SIZE || !this->_Tab[index])
 		return ;
 	this->_Tab[index]->use(target);
 }

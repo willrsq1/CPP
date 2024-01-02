@@ -27,6 +27,7 @@ Dog& Dog::operator= (const Dog& other)
 	if (this == &other)
 		return (*this);
 	this->type = other.type;
+	delete this->brain_ptr;
 	this->brain_ptr = new Brain(*other.brain_ptr);
 	return (*this);
 }
