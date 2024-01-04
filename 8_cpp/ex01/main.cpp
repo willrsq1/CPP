@@ -2,7 +2,8 @@
 
 int main()
 {
-		Span sp = Span(100000);
+		// Span sp = Span(15);
+		Span sp = Span(150000);
 		sp.addNumber(6);
 		sp.addNumber(3);
 		sp.addNumber(17);

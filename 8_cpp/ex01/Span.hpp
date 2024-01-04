@@ -32,10 +32,10 @@ class Span
 	private:
 		std::vector<int>			_V;
 		size_t						_SizeMax;
+		Span();
 	protected:
 
 	public:
-		Span();
 		Span(int);
 		~Span();
 		Span(const Span&);

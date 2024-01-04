@@ -73,15 +73,14 @@ size_t Span::longestSpan()
 
 void Span::fullFillRandom()
 {
-	MyIt<std::vector<int> >	itC(this->_V.begin(), this->_V.end());
+	std::vector<int>::iterator it;
 	std::srand(std::time(NULL));
 
-	itC._End = itC._Start + this->_SizeMax;
-	itC._Start = this->_V.end();
-	while (itC._Start < itC._End)
+	it = this->_V.begin();
+	while ((this->_V.size() != this->_SizeMax))
 	{
 		this->addNumber(std::rand() * ((std::rand() % 2) ? -1 : 1));
-		itC._Start++;
+		it++;
 	}
 }
 
@@ -89,7 +88,7 @@ void Span::display()
 {
 	MyIt<std::vector<int> >	itC(this->_V.begin(), this->_V.end());
 	
-	std::cout << "Displaying all :" << std::endl;
+	std::cout << "Displaying all :\n" << std::endl;
 	while (itC._Start < itC._End)
 	{
 		std::cout << *itC._Start << std::endl;
