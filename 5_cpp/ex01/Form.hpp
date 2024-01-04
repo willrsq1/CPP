@@ -13,10 +13,10 @@ class Form
 		bool						_Signed;
 		const int					_signGrade;
 		const int					_execGrade;
+		Form();
 	protected:
 
 	public:
-		Form();
 		Form(std::string, int, int);
 		~Form();
 		Form(const Form&);

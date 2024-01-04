@@ -24,10 +24,10 @@ class Bureaucrat
 		const std::string			_Name;
 		int					_Rank;
 		void				changeRank(int);
+		Bureaucrat();
 	protected:
 
 	public:
-		Bureaucrat();
 		Bureaucrat(std::string, int);
 		~Bureaucrat();
 		Bureaucrat(const Bureaucrat&);
