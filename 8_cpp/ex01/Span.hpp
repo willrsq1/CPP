@@ -31,7 +31,7 @@ class Span
 {
 	private:
 		std::vector<int>			_V;
-		size_t						_SizeMax;
+		unsigned int				_SizeMax;
 		Span();
 	protected:
 
