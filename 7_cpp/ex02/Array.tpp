@@ -60,6 +60,24 @@ Array<T>& Array<T>::operator= (const Array& other)
 	return (*this);
 }
 
-// template<typename T>
-// T& Array<T>::operator[] (int i)
+template<typename T>
+T& Array<T>::operator[] (size_t i)
+{
+	if (i >= this->getSize())
+		throw Array<T>::IndexOutOfBounds();
+	return (this->_Tab[i]);
+}
+
+template<typename T>
+const T& Array<T>::operator[](size_t i) const {
+    if (i >= this->getSize())
+        throw Array<T>::IndexOutOfBounds();
+    return (this->_Tab[i]);
+}
+
+template<typename T>
+const char * Array<T>::IndexOutOfBounds::what() const throw()
+{
+	return ("The index is out of bounds");
+}
 #endif

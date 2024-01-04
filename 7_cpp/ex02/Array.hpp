@@ -21,15 +21,16 @@ class Array
 		~Array();
 		Array(const Array&);
 		Array& operator= (const Array&);
-		T& operator[] (int i) const
-		{
-			if (i < 0 || i >= (int)*this->_Size)
-				throw std::exception();
-			return (this->_Tab[i]);
-		}
-		unsigned int	getSize() const{
+		T& operator[] (size_t i);
+		const T& operator[] (size_t i) const;
+		unsigned int	getSize() const{		
 			return (*this->_Size);
 		}
+
+		class IndexOutOfBounds: public std::exception
+	{
+		const char* what() const throw();
+	};
 };
 
 # include "Array.tpp"

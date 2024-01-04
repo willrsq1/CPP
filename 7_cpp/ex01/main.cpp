@@ -19,6 +19,7 @@ int main( void ) {
 	::iter(S, 5, &incr);
 	::iter(S, 5, &print);
 	::iter(S, 5, &print);
+	// std::cout << (std::string ("Hello")) + 1 << std::string a("Hello") << std::endl;
 	std::cout << "With tab of char *: \n\n";
 
 	::iter(SS, 5, &print);
