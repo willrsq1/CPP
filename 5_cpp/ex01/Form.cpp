@@ -49,8 +49,6 @@ Form::~Form()
 Form::Form(const Form& other): _Name(other._Name), _Signed(other._Signed), _signGrade(other._signGrade), _execGrade(other._execGrade)
 {
 	CLASS("Constructor by copy", "Form");
-	if (this == &other)
-		return ;
 }
 
 Form& Form::operator= (const Form& other)

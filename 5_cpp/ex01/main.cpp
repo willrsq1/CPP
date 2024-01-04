@@ -12,14 +12,14 @@ int	main()
 		machin.beSigned(bob);
 		machin.beSigned(bob);
 		machin = form;
-		// machin.beSigned(bob);
+		machin.beSigned(bob);
 		// form.beSigned(bob);
 		while (bob.getRank() < 150)
 			bob.decrGrade();
-		// machin.beSigned(bob);
+		machin.beSigned(bob);
 		Bureaucrat john = bob;
-		// while (1)
-		// 	bob.incrGrade();
+		while (1)
+			bob.incrGrade();
 		std::cout << john << std::endl << bob << std::endl;
 		while (john.getRank() > truc.getSignGrade())
 			john.incrGrade();

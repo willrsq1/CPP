@@ -9,7 +9,7 @@ Bureaucrat::Bureaucrat(): _Name("No Name")
 Bureaucrat::Bureaucrat(std::string name, int rank): _Name(name)
 {
 	CLASS("Constructor with inputs Name and Rank", "Bureaucrat");
-	_Rank = UNDEFINED;
+	_Rank = rank;
 	changeRank(rank);
 }
 Bureaucrat::~Bureaucrat()

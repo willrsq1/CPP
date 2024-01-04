@@ -13,7 +13,7 @@ int	main()
 		std::cout << girl2 << std::endl;
 		Bureaucrat	boy2("ClaudeTwo", 20);
 
-		for (size_t i = 0; i < 25; i++)
+		for (size_t i = 0; i < 5; i++)
 		{
 			boy.decrGrade();
 			boy2.incrGrade();
@@ -24,8 +24,8 @@ int	main()
 		Bureaucrat boy3(boy);
 		std::cout << boy << std::endl;
 		std::cout << boy3 << std::endl;
-		Bureaucrat boy4("Jack", 0);
-		std::cout << boy4 << std::endl;
+		// Bureaucrat boy4("Jack", 0);
+		// std::cout << boy4 << std::endl;
 		Bureaucrat a("M", 10);
 		Bureaucrat b(a);
 		std::cout << b << " and " << a << std::endl;

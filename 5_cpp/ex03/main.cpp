@@ -12,6 +12,7 @@ void	make_the_exec_a_noob(Bureaucrat executor)
 
 void	get_a_form_signed(Form *form, Bureaucrat executor)
 {
+	std::cout << executor << std::endl;
 	while (executor.getRank() > form->getSignGrade())
 		executor.incrGrade();
 	form->beSigned(executor);
@@ -19,6 +20,7 @@ void	get_a_form_signed(Form *form, Bureaucrat executor)
 		executor.incrGrade();
 	executor.executeForm(*form);
 	form->execute(executor);
+	std::cout << executor << " and " << *form << std::endl;
 }
 
 int	main()
@@ -32,15 +34,23 @@ int	main()
 		rrf = someRandomIntern.makeForm(ROBO, "Bender");
 		std::cout << *rrf << std::endl;
 		delete rrf;
+		rrf = NULL;
 		rrf = someRandomIntern.makeForm(PRESI, "Finn");
 		std::cout << *rrf << std::endl;
 		delete rrf;
+		rrf = NULL;
 		rrf = someRandomIntern.makeForm(SHRUB, "Finn");
 		std::cout << *rrf << std::endl;
 		rrf->beSigned(bob);
 		bob.executeForm(*rrf);
 		bob.signForm(*rrf);
 		rrf->execute(bob);
+		delete rrf;
+		rrf = NULL;
+
+		Form *f = someRandomIntern.makeForm(PRESI, "Mister Seven");
+		get_a_form_signed(f, Bureaucrat("Jacky", 150));
+		delete f;
 	}
 	catch(const std::exception& e)
 	{
