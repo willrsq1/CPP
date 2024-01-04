@@ -5,7 +5,7 @@ Base::~Base()
 	CLASS("Destructor", "Base");
 }
 
-Base* Base::generate(void)
+Base* generate(void)
 {
 	short	option = std::clock() % 3;
 
@@ -18,7 +18,7 @@ Base* Base::generate(void)
 	return (NULL);
 }
 
-void Base::identify(Base* p)
+void identify(Base* p)
 {
 	std::cout << "This is a ptr to a [" << BLUE;
 	if ((dynamic_cast<A*>(p)))
@@ -32,7 +32,7 @@ void Base::identify(Base* p)
 	std::cout << RESET_COLOR << "] class. (Observerved by" << BLUE << " ptr" << RESET_COLOR << ")" << std::endl;
 }
 
-void Base::identify(Base& p)
+void identify(Base& p)
 {
 	Base a;
 	

@@ -30,6 +30,7 @@ int	main()
 	data.c = 'A';
 	data.x = 42;
 
+	// Serializer a;
 	LOG(data.x);
 	LOG((*(Serializer::deserialize(Serializer::serialize(&data)))).x);
 	// Z a(129291);

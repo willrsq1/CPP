@@ -16,7 +16,6 @@ class B: public Base
 	protected:
 
 	public:
-		~B();
 };
 
 #endif

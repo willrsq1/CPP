@@ -29,7 +29,6 @@ int	main()
 		Bureaucrat a("M", 10);
 		Bureaucrat b(a);
 		std::cout << b << " and " << a << std::endl;
-		b = b;
 		a = b;
 		b = a;
 		std::cout << b << " and " << a << std::endl;

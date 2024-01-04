@@ -16,7 +16,6 @@ class C: public Base
 	protected:
 
 	public:
-		~C();
 };
 
 #endif

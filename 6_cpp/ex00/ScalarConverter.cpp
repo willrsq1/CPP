@@ -188,7 +188,7 @@ void ScalarConverter::typeFloat(const std::string & input)
 		CHAR(static_cast<char>(f));
 	else
 		CHAR("Non Displayable");
-	if (f >= INT_MIN && f <= INT_MAX)
+	if (f >= INT_MIN && (int)f <= INT_MAX)
 		INT(static_cast<int>(f));
 	else
 		INT("Overflow");

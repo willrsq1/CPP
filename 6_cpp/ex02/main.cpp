@@ -2,20 +2,20 @@
 
 int		main()
 {
-	Base * ptr = Base::generate();
-	Base::identify(ptr);
-	Base::identify(NULL);
-	Base::identify(*ptr);
-	Base::identify(NULL);
+	Base * ptr = generate();
+	identify(ptr);
+	identify(NULL);
+	identify(*ptr);
+	identify(NULL);
 	delete ptr;
 
 	for (size_t i = 0; i < 3; i++)
 	{
-		ptr = Base::generate();
+		ptr = generate();
 		std::cout << "New generation." << std::endl;
-		Base::identify(ptr);
-		Base::identify(*ptr);
-		Base::identify(*&*&*&*&*&*&*&*&*&*&*&*ptr);
+		identify(ptr);
+		identify(*ptr);
+		identify(*&*&*&*&*&*&*&*&*&*&*&*ptr);
 		delete ptr;
 	}
 		
