@@ -14,6 +14,11 @@ Array<T>::Array()
 template<typename T>
 Array<T>::Array(unsigned int size)
 {
+	if (size > 1000)
+	{
+		size = 1000;
+		std::cerr << "Too big size input. Reduced to 1000 for memory protecetion." << std::endl;
+	}
 	CLASS("Constructor with UNSIGNED INT param", "Array");
 	this->_Tab = new T[size];
 	this->_Size = new unsigned int(size);
@@ -69,7 +74,8 @@ T& Array<T>::operator[] (size_t i)
 }
 
 template<typename T>
-const T& Array<T>::operator[](size_t i) const {
+T const & Array<T>::operator[](size_t i) const
+{
     if (i >= this->getSize())
         throw Array<T>::IndexOutOfBounds();
     return (this->_Tab[i]);

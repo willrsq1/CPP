@@ -22,7 +22,7 @@ class Array
 		Array(const Array&);
 		Array& operator= (const Array&);
 		T& operator[] (size_t i);
-		const T& operator[] (size_t i) const;
+		T const & operator[] (size_t i) const;
 		unsigned int	getSize() const{		
 			return (*this->_Size);
 		}
