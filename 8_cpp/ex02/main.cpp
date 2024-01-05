@@ -1,94 +1,72 @@
 #include "MutantStack.hpp"
+#include <iostream>
 #include <list>
-#include <vector>
-
 int main()
 {
-{
-MutantStack<int> mstack;
-mstack.push(5);
-mstack.push(17);
-std::cout << mstack.top() << std::endl;
-mstack.pop();
-std::cout << mstack.size() << std::endl;
-mstack.push(3);
-mstack.push(5);
-mstack.push(737);
-std::cout << "\n\nhere\n";
-//[...]
-mstack.push(0);
-MutantStack<int>::iterator it = mstack.begin();
-MutantStack<int>::iterator ite = mstack.end();
-++it;
---it;
-while (it != ite)
-{
-std::cout << *it << std::endl;
-++it;
-}
-std::stack<int> s(mstack);
-MutantStack<int> t(mstack);
-// return 0;
-// t = mstack;
-it = t.begin();
-ite = t.end();
 
-std::cout << "\n\nhere\n";
+	MutantStack<int> mstack;
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << "Number at the top of the stack : " << mstack.top() << std::endl;
+	mstack.pop(); // remove the element from the top of the stack
+	std::cout << "Stack size now: " << mstack.size() << std::endl;
+	std::cout << "Number at the top of the stack now: " << mstack.top() << std::endl;
 
-while (it != ite)
-{
-std::cout << *it << std::endl;
-++it;
-}
-}
-std::cout << "\n\n List:\n";
-{
-std::list<int> mstack;
-mstack.push_front(5);
-mstack.push_front(17);
-std::cout << mstack.front() << std::endl;
-mstack.pop_front();
-std::cout << mstack.size() << std::endl;
-mstack.push_front(3);
-mstack.push_front(5);
-mstack.push_front(737);
-//[...]
-mstack.push_front(0);
-std::list<int>::iterator it = mstack.begin();
-std::list<int>::iterator ite = mstack.end();
-++it;
---it;
-while (it != ite)
-{
-std::cout << *it << std::endl;
-++it;
-}
-std::list<int> s(mstack);
-}
+	mstack.push(3); 
+	mstack.push(23); 
+	mstack.push(737); // add numbers to the top of the stack
 
-std::cout << "\n\n vector:\n";
-{
-std::vector<int> mstack;
-mstack.insert(mstack.begin(), 5);
-mstack.insert(mstack.begin(), 17);
-std::cout << mstack.front() << std::endl;
-mstack.erase(mstack.begin());
-std::cout << mstack.size() << std::endl;
-mstack.insert(mstack.begin(), 3);
-mstack.insert(mstack.begin(), 5);
-mstack.insert(mstack.begin(), 737);
-//[...]
-mstack.insert(mstack.begin(), 0);
-std::vector<int>::iterator it = mstack.begin();
-std::vector<int>::iterator ite = mstack.end();
-++it;
---it;
-while (it != ite)
-{
-std::cout << *it << std::endl;
-++it;
-}
-std::vector<int> s(mstack);
-}
+	std::cout << "The numbers have been added " << std::endl;
 
+	std::cout << "Number at the top of the stack now: " << mstack.top() << std::endl;
+
+
+	MutantStack<int>::iterator it = mstack.begin(); // Create an iterator pointing to the beginning of the stack
+	MutantStack<int>::iterator ite = mstack.end(); // Create an iterator pointing to the end of the stack
+	++it;
+	--it;
+	std::cout << "List of numbers in the stack :" << std::endl;
+
+	while (it != ite) 
+	{
+
+		std::cout << *it << std::endl;
+		++it;
+
+	 }
+
+	// std::stack<int> s(mstack); // Creates a new stack s by copying the mstack
+	
+	std::cout << "Now zith an std::list: same result" << std::endl;
+
+
+	std::list<int> mlist;
+    mlist.push_back(5);
+    mlist.push_back(17);
+    std::cout << "Number at the top of the list : " << mlist.back() << std::endl;
+    mlist.pop_back(); // remove the element from the back of the list
+    std::cout << "List size now: " << mlist.size() << std::endl;
+    std::cout << "Number at the top of the list now: " << mlist.back() << std::endl;
+
+    mlist.push_back(3);
+    mlist.push_back(23);
+    mlist.push_back(737); // add numbers to the back of the list
+
+    std::cout << "The numbers have been added " << std::endl;
+
+    std::cout << "Number at the top of the list now: " << mlist.back() << std::endl;
+
+    std::list<int>::iterator it2 = mlist.begin(); // Create an iterator pointing to the beginning of the list
+    std::list<int>::iterator ite2 = mlist.end(); // Create an iterator pointing to the end of the list
+    
+    std::cout << "List of numbers in the list :" << std::endl;
+    
+    while (it2 != ite2)
+    {
+        std::cout << *it2 << std::endl;
+        ++it2;
+    }
+
+
+    return 0;
 }
