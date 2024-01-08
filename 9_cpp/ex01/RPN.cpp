@@ -1,14 +1,20 @@
 #include "RPN.hpp"
 
-RPN::RPN()
+RPN::RPN() {}
+
+RPN::RPN(char **argv)
 {
-	CLASS("Constructor", "RPN");
+	std::list<std::string>		args = split(argv[1], ' ');
+
+	if (args.empty())
+		throw RPN::Empty();
+	ListInit(args);
+	if (this->_Numbers.size() != 1)
+		throw RPN::MissingOperators();
+	std::cout << "Result is: " << *(this->_Numbers.begin()) << std::endl;
 }
 
-RPN::~RPN()
-{
-	CLASS("Destructor", "RPN");
-}
+RPN::~RPN() {}
 
 RPN::RPN(const RPN& other)
 {
@@ -29,7 +35,6 @@ RPN& RPN::operator= (const RPN& other)
 
 void RPN::_FtCalcul(std::string s)
 {
-	std::list<int>::iterator	ite;
 	long long	number;
 	long long	stl;
 
@@ -59,14 +64,6 @@ void RPN::_FtCalcul(std::string s)
 	this->_Numbers.push_back(stl);
 }
 
-void RPN::_RPNCalculation(std::list<std::string> lst)
-{
-	ListInit(lst);
-	if (this->_Numbers.size() != 1)
-		throw RPN::MissingOperators();
-	std::cout << "Result is: " << *(this->_Numbers.begin()) << std::endl;
-}
-
 void RPN::ListInit(std::list<std::string> lst)
 {
 	std::string	s;
@@ -89,17 +86,78 @@ void RPN::ListInit(std::list<std::string> lst)
 	}
 }
 
+
+bool	RPN::is_operator(std::string s)
+{
+	if (s == "+" || s == "-" || s == "*" || s == "/")
+		return (1);
+	return (0);
+}
+
+
+int	RPN::my_atoi(const char *s)
+{
+	long	result;
+	size_t	i;
+
+	i = 0;
+	result = 0;
+	if (!s || !s[0])
+		throw RPN::Empty();
+	while (s[i] && s[i] == '0')
+		i++;
+	while (s[i] && s[i] <= '9' && s[i] >= '0')
+	{
+		result = result * 10 + (s[i] - 48);
+		if (result > 9)
+			throw RPN::BadArg();
+		i++;
+	}
+	if (s[i] || result > INT_MAX)
+	{
+		throw RPN::BadArg();
+	}
+	return (result);
+}
+
+std::list<std::string> RPN::split(const std::string &str, char delimiter) 
+{
+    std::list<std::string> result;
+    std::string token;
+    
+    for (size_t i = 0; i < str.length(); ++i)
+	{
+        if (str[i] != delimiter)
+		{
+            token += str[i];
+        }
+		else 
+		{
+            if (!token.empty())
+			{
+                result.push_back(token);
+                token.clear();
+            }
+        }
+    }
+    if (!token.empty())
+	{
+        result.push_back(token);
+    }
+    return result;
+}
+
 const char * RPN::BadArg::what() const throw()
 {
-	return ("hello bad arg");
+	return ("bad arg: should be between 0 and 9");
 }
 const char * RPN::BadOp::what() const throw()
 {
-	return ("The input in improperly formated, only numbers (positive ints) and operands are allowed");
+	return ("The input in improperly formated, only numbers (positive ints) from 0 to 9 and operands are allowed");
 }
 const char * RPN::Empty::what() const throw()
 {
-	return ("hello empty arg");
+	return ("empty arg");
 }
 const char * RPN::InputNotFormatedWell::what() const throw()
 {

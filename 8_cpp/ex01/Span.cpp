@@ -68,7 +68,7 @@ size_t Span::longestSpan()
 		throw Span::NotEnoughForSpan();
 	itC._Result = std::min_element(itC._Start, itC._End);
 	itC._Result2 = std::max_element(itC._Start, itC._End);
-	return ((size_t)((long)*itC._Result2 - (long)*itC._Result));
+	return (abs((long)*itC._Result2 - (long)*itC._Result));
 }
 
 void Span::fullFillRandom()

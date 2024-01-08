@@ -183,6 +183,7 @@ void PmergeMe::VinsertByFirst()
 	V.erase(V.begin());
 	Vit = V.begin();
 	Vite = V.end();
+	std::cout << "here" << std::endl;
 	if ((*Vmap.begin()).first > (*(--Vmap.end())).first)
 		std::swap((*Vmap.begin()), (*(--Vmap.end())));
 	while (Vit != Vite)
@@ -195,6 +196,7 @@ void PmergeMe::VinsertByFirst()
 		V.erase(Vit);
 		Vit = V.begin();
 		Vite = V.end();
+	std::cout << "there" << std::endl;
 	}
 }
 
@@ -260,9 +262,27 @@ void PmergeMe::LSortMergeAlgo(char **tab, int size)
 		double_check.push_back(*L_it);
 		L_it++;
 	}
-	std::cout << "Before:   ";
-	Lprint_main(Lnumbers);
+	// std::cout << "Before:   ";
+	// Lprint_main(Lnumbers);
 	Lmain();
+	
+
+    std::deque<int>::iterator it = Lnumbers.begin();
+    std::deque<int>::iterator ite = it + 1;
+
+    while (ite != Lnumbers.end())
+    {
+        if (*it > *ite)
+        {
+            std::cout << "Stack is not ordered: " << *it << " is bigger than " << *ite << std::endl;
+            return ;
+        }
+        it++;
+        ite++;
+    }
+    std::cout << "Stack is ordered !" << std::endl;
+
+
 }
 
 void PmergeMe::Lmain()
@@ -392,8 +412,8 @@ void PmergeMe::LinsertmergeSeconds()
 			Lnumbers.insert(++Lmain_ite, (*Lit).second);
 		Lit++;
 	}
-	std::cout << "After:    ";
-	Lprint_main(Lnumbers);
+	// std::cout << "After:    ";
+	// Lprint_main(Lnumbers);
 }
 
 const char *	PmergeMe::Doubles::what() const throw()

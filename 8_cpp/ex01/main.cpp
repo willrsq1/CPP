@@ -2,8 +2,8 @@
 
 int main()
 {
-		// Span sp = Span(15);
-		Span sp = Span(150000);
+		Span sp = Span(15);	
+		// Span sp = Span(150000);
 		sp.addNumber(6);
 		sp.addNumber(3);
 		sp.addNumber(17);
@@ -12,11 +12,15 @@ int main()
 		std::cout << "shortest: " << sp.shortestSpan() << std::endl;
 		std::cout << "longest: " << sp.longestSpan() << std::endl;
 		std::cout <<"\n\n";
+
+
 		sp.fullFillRandom();
-		std::cout <<"\n\n";
+
+
+		std::cout <<"\n\n After filling with randoms up to sizemax:\n\n";
 		std::cout << "shortest: " << sp.shortestSpan() << std::endl;
 		std::cout << "longest: " << sp.longestSpan() << std::endl;
-		// sp.display();
+		sp.display();
 		std::cout <<"\n\n";
 		sp.search(9);
 		sp.search(11);

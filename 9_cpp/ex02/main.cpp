@@ -40,7 +40,6 @@ int main(int argc, char **argv)
 		str = s._SortStack(&argv[1], argc - 1);
 		spent_time = ft_time_microsec() - start;
 		std::cout << str;
-		std::cout << "Sequence of " << s._ShowSize() << " positive ints.\n";
 		display_time(spent_time, "vector");
 
 		start = ft_time_microsec();

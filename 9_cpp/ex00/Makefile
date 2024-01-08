@@ -1,7 +1,7 @@
 ### COMPILATION ###
 
 CC      = c++
-FLAGS   = -Wall -Wextra -Werror
+FLAGS   = -Wall -Wextra -Werror -std=c++98
 
 ### EXECUTABLE ###
 
@@ -32,4 +32,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re template
+.PHONY: all clean fclean re

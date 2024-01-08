@@ -16,14 +16,21 @@ class RPN
 
 		void		ListInit(std::list<std::string> lst);
 		void		_FtCalcul(std::string s);
-
-	public:
+		bool		is_operator(std::string s);
+		int			my_atoi(const char *s);
+std::list<std::string> split(const std::string &str, char delimiter);
 		RPN();
-		~RPN();
 		RPN(const RPN&);
 		RPN& operator= (const RPN&);
-		void		_RPNCalculation(std::list<std::string> lst);
+
+	public:
+
+
+		RPN(char **argv);
+		~RPN();
 		
+
+
 		class Empty: public std::exception
 		{
 			const char* what() const throw();
