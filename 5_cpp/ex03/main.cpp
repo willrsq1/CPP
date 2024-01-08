@@ -39,10 +39,9 @@ int	main()
 		std::cout << *rrf << std::endl;
 		delete rrf;
 		rrf = NULL;
-		rrf = someRandomIntern.makeForm(SHRUB, "Finn");
+		rrf = someRandomIntern.makeForm(SHRUB, "Filee");
 		std::cout << *rrf << std::endl;
 		rrf->beSigned(bob);
-		bob.executeForm(*rrf);
 		bob.signForm(*rrf);
 		rrf->execute(bob);
 		delete rrf;

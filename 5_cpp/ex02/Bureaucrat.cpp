@@ -99,7 +99,9 @@ void Bureaucrat::executeForm(Form const & form) const
 		std::cout << "], lower than [" << form.getExecGrade() << "]." << RESET_COLOR << std::endl;
 	}
 	else
+	{
 		std::cout << GREEN << "Bureaucrat [" << this->_Name << "] executed Form [" << form.getName() << "]." << RESET_COLOR << std::endl;
+	}
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& guy)
